@@ -16,17 +16,18 @@
 
 ```json
 {
-  "animation-id": "some-uuid-abcd-efgh"
+  "animationId": "some-uuid-abcd-efgh"
 }
 ```
 
 ## Get Inidividual Animation API
 
-- `GET /api/animaton/<animation-uuid>`
+- `GET /api/animaton/<animationId>`
 - response:
 
 ```json
 {
+  "animationId": "some-uuid-abcd-efgh",
   "status": "READY",
   "video": "http:///domain.com/api/animaton/uuid"
 }
