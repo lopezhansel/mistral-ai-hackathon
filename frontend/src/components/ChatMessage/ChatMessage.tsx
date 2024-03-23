@@ -1,14 +1,16 @@
 import "./ChatMessage.css";
 
-type Message = {
+export type Message = {
   username: string;
   message: string;
 };
 
 function ChatMessage({ message }: { message: Message }) {
   return (
-    <div className="ChatMessage">
-      <p>{message.username}</p>
+    <div className="chat-message">
+      <p>
+        <strong>{message.username}</strong>
+      </p>
       <p>{message.message}</p>
     </div>
   );
