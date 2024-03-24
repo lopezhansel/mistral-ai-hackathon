@@ -1,7 +1,7 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import { v4 } from 'uuid'
-import { runPromptRewrite } from './runPromptRewrite'
+import { runPromptRewrite } from './runPromptRewrite.mjs'
 
 // Import the framework and instantiate it
 const fastify = Fastify({
@@ -12,7 +12,7 @@ await fastify.register(cors, {
   origin: ['http://localhost:5173']
 })
 
-const map = new WeakMap()
+const map = new Map()
 
 const AnimationStatus = {
   READY: 'READY',
@@ -26,7 +26,6 @@ fastify.decorate('notFound', (request, reply) => {
 
 fastify.setNotFoundHandler(fastify.notFound)
 
-
 fastify.post('/api/animation/', async function handler(request, reply) {
   const { prompt } = JSON.parse(request.body);
   const animationId = v4();
@@ -37,7 +36,7 @@ fastify.post('/api/animation/', async function handler(request, reply) {
     prompt
   }
 
-  runPromptRewrite().then(() => {
+  runPromptRewrite(prompt, animationId).then(() => {
     map.set(animationId, {
       ...animation,
       status: AnimationStatus.READY,
@@ -56,7 +55,6 @@ fastify.post('/api/animation/', async function handler(request, reply) {
 
 fastify.get('/api/animation/:animationId', function (request, reply) {
   const { animationId } = request.params;
-
   const animation = map.get(animationId)
 
   if (!animation) {
