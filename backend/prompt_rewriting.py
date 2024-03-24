@@ -202,7 +202,7 @@ if __name__ == "__main__":
             raise ValueError("Please provide a prompt and a uuid as a command-line argument.")
         input_prompt = sys.argv[1]
         uuid = sys.argv[2]
-        # get_video(input_prompt)
+        get_video(input_prompt)
         output_topic = get_topic(input_prompt)
         speech = ""
         introduction = get_introduction_topic(output_topic)
