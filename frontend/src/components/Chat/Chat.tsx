@@ -44,7 +44,7 @@ function Chat() {
   }, [animationId]);
 
   return (
-    <div className="chat__container max-w-7xl w-full m-auto h-screen flex flex-col">
+    <div className="chat__container max-w-7xl w-full m-auto h-screen flex flex-col p-4">
       <div className="chat__messages flex-grow">
         {messageIds.map((id) => (
           <ChatMessage messageId={id} key={id} />

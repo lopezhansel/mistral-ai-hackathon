@@ -1,6 +1,7 @@
 import React from "react";
-import { Form, Input, TextField } from "react-aria-components";
+import { Form, TextField } from "react-aria-components";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 import "./ChatInput.css";
 
@@ -19,17 +20,19 @@ function ChatInput({ onSubmit }: { onSubmit: (m: string) => void }) {
   return (
     <Form
       onSubmit={handleSubmit}
-      className="chat-input__container flex w-full items-center flex-grow-0"
+      className="chat-input__container w-full items-center flex-col flex gap-2"
     >
-      <TextField name="message" className="chat-input__text-field">
+      <TextField name="message" className="chat-input__text-field w-full ">
         <Input
-          className="chat-input__text-input"
-          placeholder="Explain backpropergation for me"
+          className="chat-input__text-input w-full"
+          placeholder="Enter a topic you would like to know more about"
         />
       </TextField>
-      <Button className="chat-input__submit" type="submit">
-        Submit
-      </Button>
+      <div className="flex flex-row w-full">
+        <Button className="chat-input__submit" type="submit">
+          Submit
+        </Button>
+      </div>
     </Form>
   );
 }

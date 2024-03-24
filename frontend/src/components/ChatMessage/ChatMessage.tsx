@@ -52,7 +52,7 @@ function ChatMessage({ messageId }: { messageId: string }) {
   const isError = message.status === "ERROR";
 
   return (
-    <div className="chat-message__container">
+    <div className="chat-message__container flex flex-col gap-3">
       <div className="chat-message__message">
         <p className="chat-message__user">
           <strong>{message.username}:</strong>
@@ -66,8 +66,8 @@ function ChatMessage({ messageId }: { messageId: string }) {
         </p>
 
         {isReady && <Video videoSrc={message.video} audioSrc={message.audio} />}
-        {isPending && <p className="chat-message__loading">loading...</p>}
-        {isError && <p className="chat-message__loading">failed</p>}
+        {isPending && <p className="chat-message__loading">Generating video...</p>}
+        {isError && <p className="chat-message__loading">Failed</p>}
       </div>
     </div>
   );
