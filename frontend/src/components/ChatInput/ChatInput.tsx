@@ -9,7 +9,6 @@ function ChatInput({ onSubmit }: { onSubmit: (m: string) => void }) {
 
     // Get form data as an object.
     const data = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(data);
 
     // Submit to your backend API...
     onSubmit(data.message.toString());
