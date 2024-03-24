@@ -2,12 +2,15 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import "./ChatMessage.css";
 import { getAnimation } from "../../services/api";
 import { useEffect } from "react";
+import Video from "../Video/Video";
 
 export type Message = {
   status: string;
   animationId: string;
   username: string;
   prompt: string;
+  video: string;
+  audio: string;
 };
 
 function useGetAnimation(animationId: string) {
@@ -44,13 +47,22 @@ function ChatMessage({ messageId }: { messageId: string }) {
   }
 
   const message = query.data;
+  const isReady = message.status === "READY";
 
   return (
     <div className="chat-message">
       <p>
-        <strong>{message.username}</strong>
+        <strong>{message.username}:</strong>
       </p>
       <p>{message.prompt}</p>
+
+      <br />
+      <p>
+        <strong> Le KhanMistral:</strong>
+      </p>
+
+      {isReady && <Video videoSrc={message.video} audioSrc={message.audio} />}
+      {!isReady && <p>loading...</p>}
     </div>
   );
 }
