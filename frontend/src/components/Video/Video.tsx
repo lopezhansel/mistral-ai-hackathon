@@ -12,8 +12,12 @@ function Video({ videoSrc, audioSrc }: { videoSrc: string; audioSrc: string }) {
         height="500"
         controls
         loop
-        onPlay={audioRef.current?.play}
-        onPause={audioRef.current?.pause}
+        onPlay={() => {
+          audioRef.current?.play();
+        }}
+        onPause={() => {
+          audioRef.current?.pause();
+        }}
       >
         Your browser does not support the video tag.
       </video>
