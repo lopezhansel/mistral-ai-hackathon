@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatMessage from "../ChatMessage/ChatMessage";
 import ChatInput from "../ChatInput/ChatInput";
 import "./Chat.css";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createAnimation, getAnimation } from "../../services/api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createAnimation } from "../../services/api";
 
 // Access the client
 
@@ -24,42 +24,34 @@ function useCreateAnimation() {
   return { mutation };
 }
 
-function useGetAnimation() {
-  const query = useQuery<{ message: string }, string>({
-    queryKey: ["animationss"],
-    queryFn: async (string) => {
-      string.meta;
-      const res = await getAnimation("some");
-      return res;
-    },
-  });
-
-  return { query };
-}
-
 function Chat() {
   const { mutation } = useCreateAnimation();
-  const [messages, setMessage] = useState([
-    {
-      username: "You",
-      message: "Generate an image of avocado pinata",
-    },
-  ]);
+  const [messageIds, setMessages] = useState<string[]>([]);
+  const animationId = mutation?.data?.animationId;
 
-  const handleOnSubumit = (message: string) => {
-    setMessage([...messages, { message, username: "You" }]);
-    
-    mutation.mutate(message);
-  };
+  function updateMessages(id: string) {
+    if (messageIds.includes(id)) {
+      return;
+    }
+
+    setMessages([...messageIds, id]);
+  }
+
+  useEffect(() => {
+    if (animationId) {
+      updateMessages(animationId);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [animationId]);
 
   return (
     <div className="chat">
       <div className="chat-messages">
-        {messages.map((m) => (
-          <ChatMessage message={m} key={m.message} />
+        {messageIds.map((id) => (
+          <ChatMessage messageId={id} key={id} />
         ))}
       </div>
-      <ChatInput onSubmit={handleOnSubumit} />
+      <ChatInput onSubmit={mutation.mutate} />
     </div>
   );
 }
