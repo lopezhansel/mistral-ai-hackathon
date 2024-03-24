@@ -1,6 +1,9 @@
 import Fastify from 'fastify'
-import cors from '@fastify/cors'
+import corsPlugin from '@fastify/cors'
+import path from 'node:path'
+import staticDirPlugin from '@fastify/static';
 import { v4 } from 'uuid'
+
 import { runPromptRewrite } from './runPromptRewrite.mjs'
 
 // Import the framework and instantiate it
@@ -8,7 +11,12 @@ const fastify = Fastify({
   logger: true
 });
 
-await fastify.register(cors, {
+await fastify.register(staticDirPlugin, {
+  root: path.join(process.cwd(), 'khan-classes'),
+  prefix: '/public/',
+});
+
+await fastify.register(corsPlugin, {
   origin: ['http://localhost:5173']
 })
 
@@ -56,6 +64,7 @@ fastify.post('/api/animation/', async function handler(request, reply) {
 fastify.get('/api/animation/:animationId', function (request, reply) {
   const { animationId } = request.params;
   const animation = map.get(animationId)
+  const baseUrl = 'http://127.0.0.1:3000/public/'
 
   if (!animation) {
     return fastify.notFound(request, reply)
@@ -63,7 +72,8 @@ fastify.get('/api/animation/:animationId', function (request, reply) {
 
   return {
     ...animation,
-    "video": "http:///domain.com/api/animaton/uuid"
+    audio: baseUrl.concat("321", '-audio.mp3'),
+    video: baseUrl.concat("324", '-video.mp4'),
   }
 })
 
