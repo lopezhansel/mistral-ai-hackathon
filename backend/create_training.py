@@ -3,10 +3,16 @@ import sys
 from dotenv import load_dotenv
 from openai import OpenAI
 import json 
+import requests
+import os
 
 load_dotenv()
 
 client = OpenAI()
+
+API_KEY = os.getenv('FIREWORKS_API_KEY')
+ACCOUNT_ID = os.getenv('FIREWORKS_ACCOUNT_ID')
+MODEL_ID = os.getenv('FIREWORKS_MODEL_ID')
 
 def get_prompt(idea):
     prompt=f"""
