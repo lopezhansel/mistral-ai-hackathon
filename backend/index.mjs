@@ -45,8 +45,12 @@ fastify.post('/api/animation/', async function handler(request, reply) {
   };
 
   runPromptRewrite(prompt, animationId).then(() => {
+    const baseUrl = 'http://127.0.0.1:3000/public/'
+
     map.set(animationId, {
       ...animation,
+      audio: baseUrl.concat("321", '-audio.mp3'),
+      video: baseUrl.concat("324", '-video.mp4'),
       status: AnimationStatus.READY,
     })
   }).catch(() => {
@@ -64,17 +68,12 @@ fastify.post('/api/animation/', async function handler(request, reply) {
 fastify.get('/api/animation/:animationId', function (request, reply) {
   const { animationId } = request.params;
   const animation = map.get(animationId)
-  const baseUrl = 'http://127.0.0.1:3000/public/'
 
   if (!animation) {
     return fastify.notFound(request, reply)
   }
 
-  return {
-    ...animation,
-    audio: baseUrl.concat("321", '-audio.mp3'),
-    video: baseUrl.concat("324", '-video.mp4'),
-  }
+  return animation
 })
 
 try {
