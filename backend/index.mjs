@@ -1,11 +1,12 @@
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import { v4 } from 'uuid'
+import { runPromptRewrite } from './runPromptRewrite'
 
 // Import the framework and instantiate it
 const fastify = Fastify({
   logger: true
-})
+});
 
 await fastify.register(cors, {
   origin: ['http://localhost:5173']
@@ -36,6 +37,18 @@ fastify.post('/api/animation/', async function handler(request, reply) {
     prompt
   }
 
+  runPromptRewrite().then(() => {
+    map.set(animationId, {
+      ...animation,
+      status: AnimationStatus.READY,
+    })
+  }).catch(() => {
+    map.set(animationId, {
+      ...animation,
+      status: AnimationStatus.ERROR,
+    });
+  });
+
   map.set(animationId, animation)
 
   return animation;
@@ -52,7 +65,6 @@ fastify.get('/api/animation/:animationId', function (request, reply) {
 
   return {
     ...animation,
-    status: AnimationStatus.READY,
     "video": "http:///domain.com/api/animaton/uuid"
   }
 })
