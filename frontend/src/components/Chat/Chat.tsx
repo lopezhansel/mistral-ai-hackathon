@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import ChatMessage from "../ChatMessage/ChatMessage";
 import ChatInput from "../ChatInput/ChatInput";
-import "./Chat.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAnimation } from "../../services/api";
 
-// Access the client
+import "./Chat.css";
 
 function useCreateAnimation() {
   const queryClient = useQueryClient();
@@ -45,8 +44,8 @@ function Chat() {
   }, [animationId]);
 
   return (
-    <div className="chat">
-      <div className="chat-messages">
+    <div className="chat__container max-w-7xl w-full m-auto h-screen flex flex-col">
+      <div className="chat__messages flex-grow">
         {messageIds.map((id) => (
           <ChatMessage messageId={id} key={id} />
         ))}
