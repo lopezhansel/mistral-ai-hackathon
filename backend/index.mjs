@@ -49,8 +49,8 @@ fastify.post('/api/animation/', async function handler(request, reply) {
 
     map.set(animationId, {
       ...animation,
-      audio: baseUrl.concat("321", '-audio.mp3'),
-      video: baseUrl.concat("324", '-video.mp4'),
+      audio: baseUrl.concat(animationId, '-audio.mp3'),
+      video: baseUrl.concat(animationId, '-video.mp4'),
       status: AnimationStatus.READY,
     })
   }).catch(() => {
