@@ -7,12 +7,9 @@ from elevenlabs import Voice, VoiceSettings, play,save
 from elevenlabs.client import ElevenLabs
 from mistralai.models.chat_completion import ChatMessage
 import requests
-import os
 import re
 import subprocess
 import tempfile
-import inspect
-import importlib.util
 import shlex
 from openai import OpenAI
 
@@ -25,7 +22,7 @@ labs_client = ElevenLabs(
 )
 mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
 khan_voice = Voice(
-        voice_id='vuGnhM2Sy53kfr36wFiO',
+        voice_id=os.getenv('KHAN_VOICE_ID'),
         settings=VoiceSettings(stability=0.71, similarity_boost=0.5, style=0.0, use_speaker_boost=True)
 )
 
@@ -191,6 +188,7 @@ def play_speech(speech):
     play(audio)
 
 def save_speech(speech,uuid):
+    print("Trying to save speech")
     audio = labs_client.generate(
     text=speech,
     voice=khan_voice,
@@ -204,7 +202,7 @@ if __name__ == "__main__":
             raise ValueError("Please provide a prompt and a uuid as a command-line argument.")
         input_prompt = sys.argv[1]
         uuid = sys.argv[2]
-        get_video(input_prompt)
+        # get_video(input_prompt)
         output_topic = get_topic(input_prompt)
         speech = ""
         introduction = get_introduction_topic(output_topic)
