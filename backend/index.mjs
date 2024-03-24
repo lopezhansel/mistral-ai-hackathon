@@ -37,12 +37,12 @@ fastify.setNotFoundHandler(fastify.notFound)
 fastify.post('/api/animation/', async function handler(request, reply) {
   const { prompt } = JSON.parse(request.body);
   const animationId = v4();
-
   const animation = {
     status: AnimationStatus.PENDING,
     animationId,
+    username: 'You',
     prompt
-  }
+  };
 
   runPromptRewrite(prompt, animationId).then(() => {
     map.set(animationId, {
