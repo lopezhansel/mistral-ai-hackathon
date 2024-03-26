@@ -13,7 +13,17 @@ load_dotenv()
 client = OpenAI()
 
 
-def generate_video(input_prompt, uuid):
+def openai_complete(prompt):
+    messages = [{"role": "user", "content": prompt}]
+    response = client.chat.completions.create(
+        model="gpt-4-0125-preview",
+        messages=messages,
+        temperature=0)
+
+    return response.choices[0].message.content.strip()
+
+
+def gen_rewrite_prompt_for_animation(input_prompt):
     prompt = f"""
     You are an expert prompt engineer and python developer, experienced with the Manim package. Your task is to rewrite a user prompt in the given format.
 
@@ -43,46 +53,50 @@ def generate_video(input_prompt, uuid):
     User prompt: "{input_prompt}"
     Rewritten prompt:
     """
-    messages = [{"role": "user", "content": prompt}]
-    response = client.chat.completions.create(
-        model="gpt-4-0125-preview",
-        messages=messages,
-        temperature=0)
-    refined_prompt = response.choices[0].message.content.strip()
+    refined_prompt = openai_complete(prompt)
+    return refined_prompt
+
+
+def gen_animation_code(refined_prompt):
+    code_string = openai_complete(refined_prompt)
+    code_pattern = re.compile("```python(.*?)```", re.DOTALL)
+    code_match = code_pattern.search(code_string)
+
+    if code_match:
+        code = code_match.group(1)
+        code = code.replace("ShowCreation", "Create")
+        print(code)
+    else:
+        print("Error: Could not find the code.")
+        sys.exit(1)
+    return code
+
+
+def run_manim(uuid, animation_code):
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as temp_file:
+        temp_file.write(animation_code)
+        temp_file_path = temp_file.name
+    manim_command = f"""manim -o {
+        uuid}-video.mp4 --media_dir khan-classes -ql {temp_file_path}"""
+    args = shlex.split(manim_command)
+    subprocess.run(args, check=True)
+    os.remove(temp_file_path)
+
+
+def generate_video(input_prompt, uuid):
+    animation_prompt = gen_rewrite_prompt_for_animation(input_prompt)
     max_retries = 3
     for i in range(max_retries):
         try:
-            messages = [{"role": "user", "content": refined_prompt}]
-            response = client.chat.completions.create(
-                model="gpt-4-0125-preview",
-                messages=messages,
-                temperature=0)
-            code_string = response.choices[0].message.content.strip()
-            code_pattern = re.compile("```python(.*?)```", re.DOTALL)
-            code_match = code_pattern.search(code_string)
-            if code_match:
-                code = code_match.group(1)
-                code = code.replace("ShowCreation", "Create")
-                print(code)
-            else:
-                print("Error: Could not find the code.")
-                sys.exit(1)
-
-            with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as temp_file:
-                temp_file.write(code)
-                temp_file_path = temp_file.name
-            manim_command = f"""manim -o {
-                uuid}-video.mp4 --media_dir khan-classes -ql {temp_file_path}"""
-            args = shlex.split(manim_command)
-            subprocess.run(args, check=True)
-            os.remove(temp_file_path)
+            animation_code = gen_animation_code(animation_prompt)
+            run_manim(uuid, animation_code)
 
             # If we reached this point, the code was successful, so break out of the loop
             break
         except Exception as e:
             # If there was an exception, add it to the context and retry
             print(f"Error: {e}")
-            refined_prompt += f"\n\nAn error occurred: {e}"
+            animation_prompt += f"\n\nAn error occurred: {e}"
 
     # If we tried all retries and still failed, raise an error
     else:
