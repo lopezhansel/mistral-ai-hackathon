@@ -1,12 +1,11 @@
+import kahn
 import sys
 import os
 from dotenv import load_dotenv
-from elevenlabs.client import ElevenLabs
+
 from mistralai.client import MistralClient
-from elevenlabs import Voice, VoiceSettings, play, save
-from elevenlabs.client import ElevenLabs
+
 from mistralai.models.chat_completion import ChatMessage
-import requests
 import re
 import subprocess
 import tempfile
@@ -17,23 +16,12 @@ load_dotenv()
 
 client = OpenAI()
 
-labs_client = ElevenLabs(
-    api_key=os.getenv('ELEVENLABS_API_KEY'),  # Defaults to ELEVEN_API_KEY
-)
 mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
-khan_voice = Voice(
-    voice_id=os.getenv('KHAN_VOICE_ID'),
-    settings=VoiceSettings(
-        stability=0.71, similarity_boost=0.5, style=0.0, use_speaker_boost=True)
-)
+
 
 API_KEY = os.getenv('FIREWORKS_API_KEY')
 ACCOUNT_ID = os.getenv('FIREWORKS_ACCOUNT_ID')
 MODEL_ID = os.getenv('FIREWORKS_MODEL_ID')
-
-
-def get_class_name(cls):
-    return cls.__name__
 
 
 def query_response(few_shot_prompt, model):
@@ -187,25 +175,6 @@ def get_conclusion_topic(speech):
     return response
 
 
-def play_speech(speech):
-    audio = labs_client.generate(
-        text=speech,
-        voice=khan_voice,
-        model="eleven_multilingual_v2"
-    )
-    play(audio)
-
-
-def save_speech(speech, uuid):
-    print("Trying to save speech")
-    audio = labs_client.generate(
-        text=speech,
-        voice=khan_voice,
-        model="eleven_multilingual_v2"
-    )
-    save(audio, f'khan-classes/{uuid}-audio.mp3')
-
-
 if __name__ == "__main__":
     try:
         if len(sys.argv) < 3:
@@ -221,7 +190,7 @@ if __name__ == "__main__":
         speech += get_explanation_topic(output_topic,
                                         introduction=introduction)
         speech += get_conclusion_topic(speech)
-        save_speech(speech=speech, uuid=uuid)
+        kahn.save_speech(speech=speech, uuid=uuid)
     except Exception as e:
         print("An error occurred:", e)
         sys.exit(1)
