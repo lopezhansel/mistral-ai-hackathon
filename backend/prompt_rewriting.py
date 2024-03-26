@@ -19,11 +19,6 @@ client = OpenAI()
 mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
 
 
-API_KEY = os.getenv('FIREWORKS_API_KEY')
-ACCOUNT_ID = os.getenv('FIREWORKS_ACCOUNT_ID')
-MODEL_ID = os.getenv('FIREWORKS_MODEL_ID')
-
-
 def query_response(few_shot_prompt, model):
     messages = [
         ChatMessage(role="user", content=few_shot_prompt)
@@ -35,7 +30,7 @@ def query_response(few_shot_prompt, model):
     return chat_response.choices[0].message.content
 
 
-def get_topic(input_prompt):
+def extract_topic(input_prompt):
     few_shot_prompt = f"""
     Identify the main topic from a prompt.
 
@@ -58,7 +53,7 @@ def get_topic(input_prompt):
     return query_response(few_shot_prompt=few_shot_prompt, model="mistral-large")
 
 
-def get_video(input_prompt):
+def generate_video(input_prompt):
     prompt = f"""
     You are an expert prompt engineer and python developer, experienced with the Manim package. Your task is to rewrite a user prompt in the given format.
 
@@ -137,7 +132,7 @@ def get_video(input_prompt):
     return f"{uuid}-video.mp4"
 
 
-def get_introduction_topic(topic):
+def gen_introduction_for_topic(topic):
     few_shot_prompt = f"""
 
     Write a 1-2 sentence introductory statement for a topic.
@@ -159,7 +154,7 @@ def get_introduction_topic(topic):
     return query_response(few_shot_prompt=few_shot_prompt, model="mistral-small")
 
 
-def get_explanation_topic(topic, introduction):
+def gen_explanation_for_topic(topic, introduction):
     prompt = f"""
     Write a 3-4 sentence explanation of statement of this topic: {topic}
     , given this introductory statement: {introduction}"""
@@ -167,7 +162,7 @@ def get_explanation_topic(topic, introduction):
     return response
 
 
-def get_conclusion_topic(speech):
+def gen_conclusion(speech):
     prompt = f"""
     Write a 1 sentence conclusion for the following speech, be friendly:{speech}
     """
@@ -182,14 +177,33 @@ if __name__ == "__main__":
                 "Please provide a prompt and a uuid as a command-line argument.")
         input_prompt = sys.argv[1]
         uuid = sys.argv[2]
-        get_video(input_prompt)
-        output_topic = get_topic(input_prompt)
+        print("Generating video")
+        generate_video(input_prompt)
+        print("Generating video finished")
+
+        print("Extracting topic")
+        topic = extract_topic(input_prompt)
+        print("Extracting topic:", topic)
         speech = ""
-        introduction = get_introduction_topic(output_topic)
+
+        print("Generating intro for topic")
+        introduction = gen_introduction_for_topic(topic)
         speech += introduction
-        speech += get_explanation_topic(output_topic,
-                                        introduction=introduction)
-        speech += get_conclusion_topic(speech)
+        print("Generated intro:", introduction)
+
+        print("Generating explination:", introduction)
+        explination = gen_explanation_for_topic(
+            topic,
+            introduction=introduction
+        )
+        speech += explination
+        print("Generated explination:", explination)
+
+        print("Generating conclusion")
+        conclusion = gen_conclusion(speech)
+        speech += conclusion
+        print("Generated conclusion:", conclusion)
+
         kahn.save_speech(speech=speech, uuid=uuid)
     except Exception as e:
         print("An error occurred:", e)
