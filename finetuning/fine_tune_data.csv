@@ -1,0 +1,112 @@
+idea
+"Addition and Subtraction on a Number Line: Animate a point moving along a number line to the right for addition and to the left for subtraction, illustrating basic arithmetic operations."
+"The Concept of Angles: Show how an angle is formed by rotating one line around a fixed point where it intersects another line, highlighting acute, obtuse, and right angles."
+Simple Harmonic Motion: Animate a pendulum swinging back and forth or a mass on a spring oscillating to demonstrate the basic idea of periodic motion.
+"Visualizing Prime Numbers: Display a grid of numbers and highlight prime numbers in one color and non-prime numbers in another, possibly animating the sieve of Eratosthenes."
+"Water Cycle in Nature: Simplify the process of evaporation, condensation, precipitation, and collection by animating clouds forming, raining, and the rainwater collecting back into a body of water."
+"Basic Circuit Elements: Animate a simple electrical circuit with a battery, resistor, and a light bulb to show the flow of current and how it lights up the bulb."
+"Gravity: Illustrate the concept of gravity by showing objects of different masses falling towards the Earth at the same rate, disregarding air resistance."
+"The Seasons: Demonstrate why seasons occur by animating the Earth's tilt and orbit around the Sun, showing how the angle of sunlight changes over the course of a year."
+Binary Numbers: Animate the conversion of decimal numbers to binary by lighting up bits (0s and 1s) in a row to represent different decimal values.
+"Simple Encryption and Decryption: Show a basic Caesar cipher in action by shifting letters in the alphabet to the right for encryption and to the left for decryption, visualizing simple data encryption and decryption."
+"Pythagorean Theorem: Animate a right-angled triangle with squares drawn on each side. As the triangle changes size, the sum of the areas of the squares on the two shorter sides always equals the area of the square on the longest side."
+"Doppler Effect: Animate a sound source (like an ambulance) moving past an observer. Show the sound waves compressed in front of the source and stretched out behind it, illustrating the change in pitch heard by the observer."
+"Magnetic Fields: Animate a bar magnet with field lines surrounding it. Introduce a second magnet and show how the field lines interact, demonstrating attraction and repulsion."
+"Projectile Motion: Show an object being launched at an angle. Animate its path as a parabola, with the horizontal motion being constant and the vertical motion being affected by gravity."
+"Photosynthesis: Illustrate the process of a plant absorbing sunlight, CO2, and water to produce glucose and oxygen. Show the chloroplasts in the leaves and the chemical reaction taking place."
+Archimedes' Principle: Animate an object being submerged in water. Show the water level rising and a force (buoyant force) pushing up on the object. Illustrate that the buoyant force equals the weight of the water displaced by the object.
+"Balancing Chemical Equations: Show reactant molecules combining to form product molecules, with the number of each type of atom staying constant."
+"Centripetal Force: Animate an object moving in a circular path, with a force constantly pulling it towards the center of the circle."
+"Resonance: Show a tuning fork vibrating at its natural frequency, then bring in another tuning fork of the same frequency and animate the second fork starting to vibrate due to resonance."
+"Ohm's Law: Show a circuit with a battery and a resistor, and animate the current flowing through the circuit. Illustrate that the current is directly proportional to the voltage and inversely proportional to the resistance."
+"Electromagnetic Induction: Animate a magnet moving through a coil of wire, showing the induced current flowing in the coil."
+"Newton's Third Law: Show two objects (like a book and a table) interacting with each other, with equal and opposite forces acting on both objects."
+"Probability Distribution: Show a normal distribution curve, with the mean at the center and the standard deviations marked off. Animate a point showing a value and its probability."
+"Radioactive Decay: Show a group of unstable nuclei decaying over time, with the number of undecayed nuclei decreasing exponentially."
+"Electric Field: Animate a positive charge and a negative charge, with electric field lines emanating from the positive charge and terminating on the negative charge."
+"Torque: Show a wrench turning a bolt, with the force applied at a distance from the axis of rotation. Animate the concept that torque equals force times distance."
+"Interference: Show two wave sources producing waves that overlap. Animate the formation of an interference pattern, with areas of constructive and destructive interference."
+Bernoulli's Principle: Show fluid flowing through a constricted pipe. Animate the velocity increasing and the pressure decreasing in the constricted area.
+Polarization: Animate a light wave passing through a polarizing filter. Show the wave being blocked when the filter is rotated perpendicular to the plane of polarization.
+Odd and Even Numbers: Animate a number line with even numbers on one side and odd numbers on the other.
+"Counting by Tens: Show a number line with multiples of ten highlighted, and a point jumping from one multiple to the next."
+"Types of Triangles: Display equilateral, isosceles, and scalene triangles, highlighting their differences in side lengths and angles."
+"Complementary Colors: Show a color wheel with complementary colors opposite each other, and animate mixing these colors to create neutral tones."
+"Simple Machines - Lever: Show a lever with a fulcrum, effort, and load, and animate how it makes lifting easier."
+"States of Matter: Animate molecules in solid, liquid, and gas states, showing their different movement patterns and densities."
+"Fractions on a Number Line: Divide a number line into equal parts and highlight fractions like 1/2, 1/3, and 1/4."
+"Polygons: Show different polygons (triangles, quadrilaterals, pentagons, etc.) and highlight their number of sides and angles."
+"Symmetry: Display shapes with reflectional and rotational symmetry, and animate their reflection lines or rotation points."
+"Parallel and Perpendicular Lines: Show two parallel lines and two perpendicular lines, emphasizing their constant distance or 90-degree angle."
+"Types of Leaves: Display simple, compound, and needle-like leaves, highlighting their differences in shape and structure."
+"Light Reflection: Animate a light ray reflecting off a flat surface, with the angle of incidence equal to the angle of reflection."
+"Mixtures and Solutions: Show a mixture of different substances, then animate them dissolving into a solution."
+"Magnetic Poles: Show a bar magnet with its north and south poles, and animate the attraction and repulsion between two magnets."
+"Area and Perimeter: Show rectangles with different dimensions, and animate the calculation of their area (length x width) and perimeter (2 x length + 2 x width)."
+"Water Displacement: Animate an object being submerged in water, with the water level rising by an amount equal to the volume of the object."
+"Multiplication as Repeated Addition: Show groups of objects being added together repeatedly, and animate the transition to multiplication (e.g., 3 + 3 + 3 = 3 × 3)."
+"Divisibility Rules: Animate checking if a number is divisible by 2, 3, 5, or 10 based on its last digit or sum of digits."
+"Scaling on a Coordinate Plane: Show a shape on a coordinate plane, and animate it being scaled by a factor of 2 or 3."
+"Complementary and Supplementary Angles: Display two angles adding up to 90° (complementary) or 180° (supplementary), and animate their relationship."
+"Diameter and Radius of a Circle: Show a circle with its diameter and radius, and animate their relationship (diameter = 2 × radius)."
+"Fraction of a Whole Number: Animate dividing a whole number into equal parts to find a fraction of it (e.g., 1/4 of 20 = 20 ÷ 4)."
+"Calculating Area of Rectangles: Display rectangles with different lengths and widths, and animate calculating their areas (A = L × W)."
+"Simple Machines - Inclined Plane: Animate an object being pushed up an inclined plane, showing how it reduces the force needed."
+Converting Between Fractions and Decimals: Show a fraction and animate converting it to a decimal by dividing the numerator by the denominator.
+Reflection and Rotation of Shapes: Display a shape and animate its reflection across a line or rotation around a point.
+"Kinetic and Potential Energy: Animate a roller coaster, showing the conversion between potential energy (at the top) and kinetic energy (at the bottom)."
+Multiplying Fractions: Show two fractions and animate multiplying them by multiplying their numerators and denominators separately.
+"Balancing Equations: Display a simple equation (e.g., x + 3 = 7), and animate the process of subtracting 3 from both sides to isolate the variable."
+Probability of Coin Flips: Animate flipping a coin multiple times and show the probability of getting heads or tails.
+Factors and Multiples: Display a number and animate finding its factors (numbers that divide into it evenly) and multiples (products of the number and integers).
+"Measuring Length in Metric Units: Show objects of different lengths and animate measuring them in millimeters, centimeters, and meters."
+Calculating Volume of Cubes: Display cubes with different side lengths and animate calculating their volumes (V = s³).
+"Equivalent Ratios: Show two equivalent ratios (e.g., 2:3 and 4:6) and animate their proportional relationship."
+"Newton's First Law of Motion: Animate an object at rest or in motion, and show how it continues in that state unless acted upon by an unbalanced force."
+Subtracting Integers: Show a number line and animate subtracting positive and negative integers by moving left or right.
+"Types of Quadrilaterals: Display examples of parallelograms, rhombuses, rectangles, squares, and trapezoids, and highlight their properties."
+"Comparing Fractions: Show two fractions with different numerators and denominators, and animate comparing their values using cross multiplication."
+Reciprocals: Display a fraction and animate finding its reciprocal by flipping the numerator and denominator.
+Calculating Perimeter of Polygons: Show polygons with labeled side lengths and animate calculating their perimeters by adding all sides.
+Measuring Angles in Radians: Display an angle in a circle and animate measuring it in radians (ratio of arc length to radius).
+"Density, Mass, and Volume: Show objects of different sizes and materials, and animate the relationship between density, mass, and volume (D = M / V)."
+Prime Factorization: Display a composite number and animate breaking it down into its prime factors.
+Elastic and Inelastic Collisions: Animate two objects colliding and show the difference between elastic (kinetic energy conserved) and inelastic (kinetic energy lost) collisions.
+"Multiplying Decimals: Display two decimals and animate multiplying them, emphasizing the placement of the decimal point in the product."
+"Center of Mass: Animate balancing a flat object (like a ruler) on a finger, showing the concept of the center of mass."
+"Order of Rotational Symmetry: Show shapes with different orders of rotational symmetry (e.g., square, pentagon) and animate their rotation."
+"Calculating Speed, Distance, and Time: Animate an object moving at a constant speed and show the relationship between speed, distance, and time (Speed = Distance / Time)."
+Absolute Value: Show a number line and animate the concept of absolute value as the distance from zero.
+"Solving Proportions: Display a proportion (e.g., 2/3 = x/6) and animate cross-multiplying and dividing to solve for the unknown value."
+"Projectile Motion: Animate an object being launched at an angle, showing its parabolic path and the effects of gravity."
+Exponents and Square Roots: Display a number being multiplied by itself (exponent) and animate finding the square root as the inverse operation.
+"Associative Property of Multiplication: Animate multiplying three numbers in different groupings and show that the product remains the same (e.g., (2 × 3) × 4 = 2 × (3 × 4))."
+"Rounding Numbers: Show a number line with a number and animate rounding it to the nearest ten, hundred, or thousand."
+Complementary and Supplementary Angles in a Triangle: Animate a triangle with one 90° angle and show how the other two angles are complementary.
+Multiplying Powers with the Same Base: Display two powers with the same base and animate multiplying them by adding their exponents.
+Dividing Fractions: Show two fractions and animate dividing them by multiplying the first fraction by the reciprocal of the second.
+"Calculating Mean, Median, and Mode: Display a set of numbers and animate finding the mean (average), median (middle value), and mode (most frequent value)."
+Friction and Sliding Objects: Animate an object sliding on a surface and show how friction opposes its motion.
+Simplifying Ratios: Display a ratio and animate simplifying it by dividing both terms by their greatest common factor.
+"Symmetry in Polygons: Show examples of polygons with line symmetry (e.g., equilateral triangle) and rotational symmetry (e.g., square)."
+Converting Between Percentages and Decimals: Display a percentage and animate converting it to a decimal by dividing by 100.
+Calculating Work Done: Animate an object being pushed or lifted and show the calculation of work done as force multiplied by distance.
+"Distributive Property: Show a number multiplied by a sum (e.g., 2(x + 3)) and animate distributing the multiplication over the addition."
+"Inverse Operations: Display an equation (e.g., x + 5 = 10) and animate using the inverse operation (subtraction) to solve for the variable."
+Velocity and Acceleration: Animate an object moving with changing speed and show the difference between velocity (speed with direction) and acceleration (change in velocity).
+"Properties of Parallelograms: Display a parallelogram and animate its properties (opposite sides parallel and equal, opposite angles equal)."
+"Simple Interest: Show a principal amount, interest rate, and time, and animate calculating the simple interest earned."
+"Types of Levers: Show examples of first, second, and third-class levers and animate how they balance effort and load."
+"Multiplying Mixed Numbers: Display two mixed numbers and animate converting them to improper fractions, multiplying, and simplifying the result."
+Calculating Average Acceleration: Animate an object changing its velocity over time and show the calculation of its average acceleration as change in velocity divided by time.
+Uniform Motion: Animate an object moving in a straight line at a constant speed.
+Newton's Second Law: Show an object being pushed with a force and animate its resulting acceleration (F = ma).
+"Inertia: Animate an object at rest or in motion, and show how it resists changes to its state of motion."
+Hooke's Law: Animate a spring being stretched or compressed and show how the force is proportional to the displacement (F = kx).
+Pressure: Display a force acting on a surface and animate the calculation of pressure as force divided by area (P = F / A).
+"Conduction, Convection, and Radiation: Show examples of heat transfer through direct contact (conduction), fluid motion (convection), and electromagnetic waves (radiation)."
+Reflection and Refraction of Light: Animate a light ray reflecting off a mirror or refracting as it passes through a lens.
+Dispersion of Light: Show a prism splitting white light into its component colors (rainbow).
+"Types of Waves: Animate examples of transverse (e.g., light) and longitudinal (e.g., sound) waves."
+Interference: Show two wave sources and animate the resulting interference pattern (constructive and destructive interference).
+Coulomb's Law: Display two charged particles and animate the force of attraction or repulsion between them.

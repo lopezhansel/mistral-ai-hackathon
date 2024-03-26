@@ -1,0 +1,13 @@
+# The ID of the dataset you created above.
+dataset: data3
+epochs: 2
+text_completion:
+  # How the fields of the JSON dataset should be formatted into the input text.
+  input_template: "### GIVEN THE ### INSTRUCTION: {instruction}  ### RESPONSE IS: "
+  
+  # How the fields of the JSON dataset should be formatted into the output text.
+  output_template: "{response}"
+
+
+# The Hugging Face model name of the base model.
+base_model: mistralai/Mixtral-8x7B-Instruct-v0.1
