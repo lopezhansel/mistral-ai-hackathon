@@ -1,26 +1,24 @@
 #!/bin/bash
 
-eval "$(/usr/libexec/path_helper)"
 source ./venv/bin/activate
 
-topic=$1
-video_uuid=$2
+prompt=$1
+uuid=$2
 
-echo 'Topic:' $topic
-echo 'video_uuid:' $video_uuid
+echo 'Prompt:' $prompt
+echo 'UUID:' $uuid
 
+# Run python Script
+echo "Running script: prompt_rewriting.py $@"
 python3 ./prompt_rewriting.py "$@"
 
-video_file=$(find khan-classes/ -type f -name "$video_uuid*.mp4")
-cp $video_file khan-classes/
+# Move generated video
+echo "Running copying all videos to khan-classes/"
+find khan-classes/videos/ -type f -name "$uuid-video.mp4" -exec cp {} khan-classes \;
 
-original="$video_uuid-audio.mp3"
-newname="${original//\"/}"
-echo "original:" $original
-echo "newname:" $newname
-mv khan-classes/$original khan-classes/$newname
+# Move generated audio 
+echo 'Moving audio file'
+find khan-classes -type f -name "*$uuid*-audio.mp3" -exec mv {} khan-classes/$uuid-audio.mp3 \;
 
 exit 0
 
-# echo ./prompt_rewriting.py "$@"
-# sleep 2

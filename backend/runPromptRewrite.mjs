@@ -13,7 +13,7 @@ export function runPromptRewrite(
     const stdErrFile = fs.createWriteStream(
       path.join(process.cwd(), 'khan-classes', `${uuid}-stderr.log`)
     );
-    const args = ['./run_prompt_rewrite.sh', `"${prompt}"`, `"${uuid}"`];
+    const args = ['./run_prompt_rewrite.sh', prompt, uuid];
     const childProcess = spawn('bash', args, {
       cwd: process.cwd(),
     });
