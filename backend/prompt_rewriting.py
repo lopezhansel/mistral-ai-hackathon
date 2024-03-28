@@ -3,8 +3,6 @@ import kahn
 import sys
 
 
-
-
 if __name__ == "__main__":
     try:
         if len(sys.argv) < 3:
@@ -12,13 +10,11 @@ if __name__ == "__main__":
                 "Please provide a prompt and a uuid as a command-line argument.")
         prompt = sys.argv[1]
         uuid = sys.argv[2]
-        print("Generating video")
-        manim_video.generate_video(prompt, uuid)
-        print("Generating video finished")
+        print('Prompt:', prompt)
+        print('UUID:', uuid)
 
-        print("Generating audio")
+        manim_video.generate_video(prompt, uuid)
         kahn.generate_audio(prompt, uuid)
-        print("Generating audio finished")
 
     except Exception as e:
         print("An error occurred:", e)

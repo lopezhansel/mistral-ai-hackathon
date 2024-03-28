@@ -70,6 +70,7 @@ def run_manim(uuid, animation_code):
 
 
 def generate_video(input_prompt, uuid):
+    print("Generating video")
     animation_instructions = generate_animation_instructions(input_prompt)
     print("animation_instructions:", animation_instructions)
     with open(f'./khan-classes/{uuid}-animation-instructions.txt', 'w') as file:
@@ -86,6 +87,7 @@ def generate_video(input_prompt, uuid):
                 file.write(animation_code)
 
             # If we reached this point, the code was successful, so break out of the loop
+            print("Generating video finished")
             break
         except Exception as e:
             # If there was an exception, add it to the context and retry
@@ -96,5 +98,3 @@ def generate_video(input_prompt, uuid):
     else:
         print("Error: Failed to generate Manim video after multiple retries.")
         sys.exit(1)
-
-    return f"{uuid}-video.mp4"

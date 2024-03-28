@@ -125,4 +125,6 @@ def generate_audio(input_prompt, uuid):
     speech += conclusion
     print("Generated conclusion:", conclusion)
 
+    print("Generating audio")
     save_speech(speech=speech, uuid=uuid)
+    print("Generating audio finished")
