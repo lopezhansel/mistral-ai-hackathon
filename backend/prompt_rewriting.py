@@ -86,41 +86,48 @@ def gen_conclusion(speech):
     return response
 
 
+def generate_audio(input_prompt, uuid):
+    print("Extracting topic")
+    topic = extract_topic(input_prompt)
+    print("Extracting topic:", topic)
+    speech = ""
+
+    print("Generating intro for topic")
+    introduction = gen_introduction_for_topic(topic)
+    speech += introduction
+    print("Generated intro:", introduction)
+
+    print("Generating explination:", introduction)
+    explination = gen_explanation_for_topic(
+        topic,
+        introduction=introduction
+    )
+    speech += explination
+    print("Generated explination:", explination)
+
+    print("Generating conclusion")
+    conclusion = gen_conclusion(speech)
+    speech += conclusion
+    print("Generated conclusion:", conclusion)
+
+    kahn.save_speech(speech=speech, uuid=uuid)
+
+
 if __name__ == "__main__":
     try:
         if len(sys.argv) < 3:
             raise ValueError(
                 "Please provide a prompt and a uuid as a command-line argument.")
-        input_prompt = sys.argv[1]
+        prompt = sys.argv[1]
         uuid = sys.argv[2]
         print("Generating video")
-        manim_video.generate_video(input_prompt, uuid)
+        manim_video.generate_video(prompt, uuid)
         print("Generating video finished")
 
-        print("Extracting topic")
-        topic = extract_topic(input_prompt)
-        print("Extracting topic:", topic)
-        speech = ""
+        print("Generating audio")
+        generate_audio(prompt, uuid)
+        print("Generating video finished")
 
-        print("Generating intro for topic")
-        introduction = gen_introduction_for_topic(topic)
-        speech += introduction
-        print("Generated intro:", introduction)
-
-        print("Generating explination:", introduction)
-        explination = gen_explanation_for_topic(
-            topic,
-            introduction=introduction
-        )
-        speech += explination
-        print("Generated explination:", explination)
-
-        print("Generating conclusion")
-        conclusion = gen_conclusion(speech)
-        speech += conclusion
-        print("Generated conclusion:", conclusion)
-
-        kahn.save_speech(speech=speech, uuid=uuid)
     except Exception as e:
         print("An error occurred:", e)
         sys.exit(1)
