@@ -23,7 +23,7 @@ def openai_complete(prompt):
     return response.choices[0].message.content.strip()
 
 
-def gen_rewrite_prompt_for_animation(input_prompt):
+def generate_animation_instructions(input_prompt):
     prompt = f"""
     You are an expert prompt engineer and python developer, experienced with the Manim package. Your task is to rewrite a user prompt in the given format.
 
@@ -63,13 +63,14 @@ def gen_animation_code(refined_prompt):
     code_match = code_pattern.search(code_string)
 
     if code_match:
-        code = code_match.group(1)
-        code = code.replace("ShowCreation", "Create")
-        print(code)
+        animation_code = code_match.group(1)
+        animation_code = animation_code.replace("ShowCreation", "Create")
+        print(animation_code)
     else:
         print("Error: Could not find the code.")
         sys.exit(1)
-    return code
+
+    return animation_code
 
 
 def run_manim(uuid, animation_code):
@@ -84,19 +85,27 @@ def run_manim(uuid, animation_code):
 
 
 def generate_video(input_prompt, uuid):
-    animation_prompt = gen_rewrite_prompt_for_animation(input_prompt)
+    animation_instructions = generate_animation_instructions(input_prompt)
+    print("animation_instructions:", animation_instructions)
+    with open(f'./khan-classes/{uuid}-animation-instructions.txt', 'w') as file:
+        file.write(animation_instructions)
+
     max_retries = 3
     for i in range(max_retries):
         try:
-            animation_code = gen_animation_code(animation_prompt)
+            animation_code = gen_animation_code(animation_instructions)
+
+            print("animation_code:", animation_code)
             run_manim(uuid, animation_code)
+            with open(f'./khan-classes/{uuid}-animation-code.py', 'w') as file:
+                file.write(animation_code)
 
             # If we reached this point, the code was successful, so break out of the loop
             break
         except Exception as e:
             # If there was an exception, add it to the context and retry
             print(f"Error: {e}")
-            animation_prompt += f"\n\nAn error occurred: {e}"
+            animation_instructions += f"\n\nAn error occurred: {e}"
 
     # If we tried all retries and still failed, raise an error
     else:
