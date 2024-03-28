@@ -1,28 +1,7 @@
 import manim_video
 import kahn
 import sys
-import os
-from dotenv import load_dotenv
-
-from mistralai.client import MistralClient
-
-from mistralai.models.chat_completion import ChatMessage
-
-load_dotenv()
-
-
-mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
-
-
-def query_response(few_shot_prompt, model):
-    messages = [
-        ChatMessage(role="user", content=few_shot_prompt)
-    ]
-    chat_response = mistral_client.chat(
-        model=model,
-        messages=messages,
-    )
-    return chat_response.choices[0].message.content
+import mistral_client
 
 
 def extract_topic(input_prompt):
@@ -45,7 +24,7 @@ def extract_topic(input_prompt):
     Prompt: "{input_prompt}"
     Main Topic:
     """
-    return query_response(few_shot_prompt=few_shot_prompt, model="mistral-large")
+    return mistral_client.chat(few_shot_prompt=few_shot_prompt, model="mistral-large")
 
 
 def gen_introduction_for_topic(topic):
@@ -67,14 +46,15 @@ def gen_introduction_for_topic(topic):
 
     Prompt: Write a one sentence introductory statement for the following topic:"{topic}"
     Response:"""
-    return query_response(few_shot_prompt=few_shot_prompt, model="mistral-small")
+    return mistral_client.chat(few_shot_prompt=few_shot_prompt, model="mistral-small")
 
 
 def gen_explanation_for_topic(topic, introduction):
     prompt = f"""
     Write a 3-4 sentence explanation of statement of this topic: {topic}
     , given this introductory statement: {introduction}"""
-    response = query_response(few_shot_prompt=prompt, model="mistral-large")
+    response = mistral_client.chat(
+        few_shot_prompt=prompt, model="mistral-large")
     return response
 
 
@@ -82,7 +62,8 @@ def gen_conclusion(speech):
     prompt = f"""
     Write a 1 sentence conclusion for the following speech, be friendly:{speech}
     """
-    response = query_response(few_shot_prompt=prompt, model="mistral-small")
+    response = mistral_client.chat(
+        few_shot_prompt=prompt, model="mistral-small")
     return response
 
 
