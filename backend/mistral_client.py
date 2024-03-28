@@ -5,9 +5,9 @@ from mistralai.models.chat_completion import ChatMessage
 import os
 
 load_dotenv()
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
 
-
-mistral_client = MistralClient(api_key=os.getenv("MISTRAL_API_KEY"))
+mistral_client = MistralClient(api_key=MISTRAL_API_KEY)
 
 
 def chat(few_shot_prompt, model):

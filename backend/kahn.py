@@ -6,13 +6,13 @@ from elevenlabs import Voice, VoiceSettings, play, save
 from dotenv import load_dotenv
 
 load_dotenv()
-
 ELEVENLABS_API_KEY = os.getenv('ELEVENLABS_API_KEY')
+KHAN_VOICE_ID = os.getenv('KHAN_VOICE_ID')
 
 labs_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
 
 khan_voice = Voice(
-    voice_id=os.getenv('KHAN_VOICE_ID'),
+    voice_id=KHAN_VOICE_ID,
     settings=VoiceSettings(
         stability=0.71, similarity_boost=0.5, style=0.0, use_speaker_boost=True)
 )

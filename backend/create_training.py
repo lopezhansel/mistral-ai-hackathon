@@ -10,9 +10,9 @@ load_dotenv()
 
 client = OpenAI()
 
-API_KEY = os.getenv('FIREWORKS_API_KEY')
-ACCOUNT_ID = os.getenv('FIREWORKS_ACCOUNT_ID')
-MODEL_ID = os.getenv('FIREWORKS_MODEL_ID')
+FIREWORKS_API_KEY = os.getenv('FIREWORKS_API_KEY')
+FIREWORKS_ACCOUNT_ID = os.getenv('FIREWORKS_ACCOUNT_ID')
+FIREWORKS_MODEL_ID = os.getenv('FIREWORKS_MODEL_ID')
 
 def get_prompt(idea):
     prompt=f"""

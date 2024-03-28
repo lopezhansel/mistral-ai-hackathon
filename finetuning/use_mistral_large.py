@@ -4,8 +4,10 @@ from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
 
 
+MISTRAL_API_KEY = os.getenv('MISTRAL_API_KEY')
+
 def generate_mistral_response(user_input):
-    api_key = os.getenv('MISTRAL_API_KEY')
+    api_key = MISTRAL_API_KEY
     model = "mistral-large-latest"
     client = MistralClient(api_key=api_key)
     prompt = f'''You are an expert python developer experienced in using Manim. Given the user query: {
