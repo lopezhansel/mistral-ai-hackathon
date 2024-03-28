@@ -5,22 +5,7 @@ import subprocess
 import tempfile
 import shlex
 
-from openai import OpenAI
-from dotenv import load_dotenv
-
-load_dotenv()
-
-client = OpenAI()
-
-
-def openai_complete(prompt):
-    messages = [{"role": "user", "content": prompt}]
-    response = client.chat.completions.create(
-        model="gpt-4-0125-preview",
-        messages=messages,
-        temperature=0)
-
-    return response.choices[0].message.content.strip()
+import openai_client
 
 
 def generate_animation_instructions(input_prompt):
@@ -53,12 +38,12 @@ def generate_animation_instructions(input_prompt):
     User prompt: "{input_prompt}"
     Rewritten prompt:
     """
-    refined_prompt = openai_complete(prompt)
+    refined_prompt = openai_client.complete_v4(prompt)
     return refined_prompt
 
 
 def gen_animation_code(refined_prompt):
-    code_string = openai_complete(refined_prompt)
+    code_string = openai_client.complete_v4(refined_prompt)
     code_pattern = re.compile("```python(.*?)```", re.DOTALL)
     code_match = code_pattern.search(code_string)
 
