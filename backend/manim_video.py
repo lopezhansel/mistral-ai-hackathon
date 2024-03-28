@@ -78,7 +78,7 @@ def run_manim(uuid, animation_code):
         temp_file.write(animation_code)
         temp_file_path = temp_file.name
     manim_command = f"""manim -o {
-        uuid}-video.mp4 --media_dir khan-classes -ql {temp_file_path}"""
+        uuid}-video.mp4 --media_dir khan-classes --flush_cache -ql {temp_file_path}"""
     args = shlex.split(manim_command)
     subprocess.run(args, check=True)
     os.remove(temp_file_path)
