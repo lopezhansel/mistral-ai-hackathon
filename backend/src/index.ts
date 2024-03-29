@@ -1,24 +1,15 @@
 import Fastify from 'fastify'
-import corsPlugin from '@fastify/cors'
-import path from 'node:path'
-import staticDirPlugin from '@fastify/static';
 import { v4 } from 'uuid'
 
 import { runPromptRewrite } from './runPromptRewrite'
+import { corsPlugin, staticDirPlugin } from './server/plugins';
 
-// Import the framework and instantiate it
-const fastify = Fastify({
+export const fastify = Fastify({
   logger: true
 });
 
-await fastify.register(staticDirPlugin, {
-  root: path.join(process.cwd(), 'khan-classes'),
-  prefix: '/public/',
-});
-
-await fastify.register(corsPlugin, {
-  origin: ['http://localhost:5173']
-})
+await fastify.register(staticDirPlugin)
+await fastify.register(corsPlugin)
 
 const map = new Map()
 
