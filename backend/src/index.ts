@@ -4,7 +4,7 @@ import path from 'node:path'
 import staticDirPlugin from '@fastify/static';
 import { v4 } from 'uuid'
 
-import { runPromptRewrite } from './runPromptRewrite.mjs'
+import { runPromptRewrite } from './runPromptRewrite'
 
 // Import the framework and instantiate it
 const fastify = Fastify({
