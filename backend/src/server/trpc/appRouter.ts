@@ -29,16 +29,20 @@ export const animationRouter = router({
       const animationId = animation.id.toString();
 
       runPromptRewrite(prompt, animationId).then(() => {
-        const baseUrl = 'http://127.0.0.1:3000/public/'
-        db.update(schema.animations).set({
-          audio: baseUrl.concat(animationId, '-audio.mp3'),
-          video: baseUrl.concat(animationId, '-video.mp4'),
-          status: AnimationStatus.READY,
-        }).where(eq(schema.animations.animationId, animation.id))
+        const baseUrl = 'http://localhost:3000/public/'
+        return db
+          .update(schema.animations)
+          .set({
+            audio: baseUrl.concat(animationId, '-audio.mp3'),
+            video: baseUrl.concat(animationId, '-video.mp4'),
+            status: AnimationStatus.READY,
+          })
+          .where(eq(schema.animations.animationId, animation.id))
       }).catch(() => {
-        db.update(schema.animations).set({
-          status: AnimationStatus.ERROR,
-        })
+        return db
+          .update(schema.animations)
+          .set({ status: AnimationStatus.ERROR })
+          .where(eq(schema.animations.animationId, animation.id))
       });
 
       const newLocal = await db.query.animations.findFirst({
