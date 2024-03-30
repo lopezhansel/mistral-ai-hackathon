@@ -6,5 +6,6 @@ import { dbCredentials } from '../../../drizzle.config.json'
 
 const sqliteClient = new Database(dbCredentials.url, { fileMustExist: true });
 export const db = drizzle(sqliteClient, {
-  schema
+  schema,
+  logger: true,
 });
