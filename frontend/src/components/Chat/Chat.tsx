@@ -1,34 +1,16 @@
 import { useEffect, useState } from "react";
 import ChatMessage from "../ChatMessage/ChatMessage";
 import ChatInput from "../ChatInput/ChatInput";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createAnimation } from "../../services/api";
 
 import "./Chat.css";
-
-function useCreateAnimation() {
-  const queryClient = useQueryClient();
-
-  // Mutations
-  const mutation = useMutation({
-    mutationFn: createAnimation,
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({
-        queryKey: ["animations"],
-      });
-    },
-  });
-
-  return { mutation };
-}
+import { trpc } from "@/lib/trpc";
 
 function Chat() {
-  const { mutation } = useCreateAnimation();
-  const [messageIds, setMessages] = useState<string[]>([]);
-  const animationId = mutation?.data?.animationId;
+  const useCreateAnimation = trpc.animation.create.useMutation();
+  const [messageIds, setMessages] = useState<number[]>([]);
+  const animationId = useCreateAnimation?.data?.animationId;
 
-  function updateMessages(id: string) {
+  function updateMessages(id: number) {
     if (messageIds.includes(id)) {
       return;
     }
@@ -50,7 +32,11 @@ function Chat() {
           <ChatMessage messageId={id} key={id} />
         ))}
       </div>
-      <ChatInput onSubmit={mutation.mutate} />
+      <ChatInput
+        onSubmit={(prompt) => {
+          useCreateAnimation.mutate({ prompt });
+        }}
+      />
     </div>
   );
 }

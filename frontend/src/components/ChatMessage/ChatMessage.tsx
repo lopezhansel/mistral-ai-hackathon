@@ -1,8 +1,9 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import "./ChatMessage.css";
-import { getAnimation } from "../../services/api";
 import { useEffect } from "react";
 import Video from "../Video/Video";
+import { trpc } from "@/lib/trpc";
+import { getQueryKey } from "@trpc/react-query";
 
 export type Message = {
   status: string;
@@ -13,19 +14,23 @@ export type Message = {
   audio: string;
 };
 
-function useGetAnimation(animationId: string) {
+function useGetAnimation(animationId: number) {
   const queryClient = useQueryClient();
-  const query = useQuery<{ message: string }, string, Message>({
+
+  const query = trpc.animation.getById.useQuery(animationId, {
     enabled: !!animationId,
-    queryKey: ["animations", animationId],
-    queryFn: () => getAnimation(animationId),
   });
   const status = query.data?.status;
 
   useEffect(() => {
+    const animationKey = getQueryKey(
+      trpc.animation.getById,
+      animationId,
+      "query"
+    );
     const timeout = setInterval(() => {
       queryClient.invalidateQueries({
-        queryKey: ["animations", animationId],
+        queryKey: animationKey,
       });
     }, 1000);
 
@@ -39,7 +44,7 @@ function useGetAnimation(animationId: string) {
   return { query };
 }
 
-function ChatMessage({ messageId }: { messageId: string }) {
+function ChatMessage({ messageId }: { messageId: number }) {
   const { query } = useGetAnimation(messageId);
 
   if (!query.data) {
@@ -65,8 +70,12 @@ function ChatMessage({ messageId }: { messageId: string }) {
           <strong> Le KhanMistral:</strong>
         </p>
 
-        {isReady && <Video videoSrc={message.video} audioSrc={message.audio} />}
-        {isPending && <p className="chat-message__loading">Generating video...</p>}
+        {isReady && message.video && message.audio && (
+          <Video videoSrc={message.video} audioSrc={message.audio} />
+        )}
+        {isPending && (
+          <p className="chat-message__loading">Generating video...</p>
+        )}
         {isError && <p className="chat-message__loading">Failed</p>}
       </div>
     </div>
