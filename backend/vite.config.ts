@@ -1,16 +1,23 @@
 import { defineConfig } from 'vite'
-import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, resolve } from 'node:path'
 import viteReact from '@vitejs/plugin-react'
+import { fileURLToPath } from 'node:url'
 
-const path = fileURLToPath(import.meta.url)
-const root = resolve(dirname(path), 'src/client')
+const pathDir = dirname(fileURLToPath(import.meta.url))
+const frontendDir = resolve(pathDir, 'frontend')
+const frontendSrcDir = resolve(pathDir, 'frontend/src')
+console.log('frontendDir', {
+  pathDir,
+  frontendSrcDir,
+})
 
-const plugins = [
-  viteReact()
-]
-
+// https://vitejs.dev/config/
 export default defineConfig({
-  root,
-  plugins,
+  root: frontendDir,
+  plugins: [viteReact()],
+  resolve: {
+    alias: {
+      '@': frontendSrcDir,
+    },
+  },
 })
