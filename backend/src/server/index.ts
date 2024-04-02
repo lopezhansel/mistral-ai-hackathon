@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 
-import { corsPlugin, staticDirPlugin } from './plugins';
+import * as plugins from './plugins';
 import routes from './routes';
 import { trpcPlugin } from './trpc-routes';
 
@@ -9,14 +9,17 @@ export const fastify = Fastify({
   maxParamLength: 5000,
 });
 
-await fastify.register(staticDirPlugin)
+fastify.register(plugins.cors);
+await fastify.register(plugins.staticDir);
+await fastify.register(plugins.vite);
 fastify.register(trpcPlugin)
-fastify.register(corsPlugin)
 fastify.register(routes)
 
 fastify.decorate('notFound', (request, reply) => {
   reply.code(404).type('text/html').send('Not Found')
 })
+
+await fastify.vite.ready();
 
 fastify.setNotFoundHandler(fastify.notFound)
 
