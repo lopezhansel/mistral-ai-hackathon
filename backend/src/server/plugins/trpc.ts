@@ -2,11 +2,11 @@ import {
   fastifyTRPCPlugin,
   FastifyTRPCPluginOptions
 } from '@trpc/server/adapters/fastify';
-import { AppRouter, appRouter } from './trpc';
+import { AppRouter, appRouter } from '../trpc';
 
 import fastifyPlugin from 'fastify-plugin'
 
-export const trpcPlugin = fastifyPlugin(function (fastify, opts, done) {
+export const trpc = fastifyPlugin(function (fastify, opts, done) {
   fastify.register(fastifyTRPCPlugin, {
     prefix: '/trpc',
     trpcOptions: {

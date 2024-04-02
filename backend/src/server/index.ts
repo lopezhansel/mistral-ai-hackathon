@@ -2,7 +2,6 @@ import Fastify from 'fastify'
 
 import * as plugins from './plugins';
 import routes from './routes';
-import { trpcPlugin } from './trpc-routes';
 
 export const fastify = Fastify({
   logger: true,
@@ -12,7 +11,7 @@ export const fastify = Fastify({
 fastify.register(plugins.cors);
 await fastify.register(plugins.staticDir);
 await fastify.register(plugins.vite);
-fastify.register(trpcPlugin)
+fastify.register(plugins.trpc)
 fastify.register(routes)
 
 fastify.decorate('notFound', (request, reply) => {
