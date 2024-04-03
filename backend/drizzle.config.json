@@ -3,7 +3,7 @@
   "out": "./migrations",
   "driver": "better-sqlite",
   "dbCredentials": {
-    "url": "./local-db.sqlite"
+    "url": "./backend/local-db.sqlite"
   },
   "verbose": true,
   "strict": true
