@@ -11,10 +11,12 @@ node_modules/
 
 # Backend
 backend/khan-classes*/
-backend/__pycache__
-backend/venv
 .env
 *.sqlite
+
+# Python
+python/__pycache__
+python/venv
 
 # Frontend
 .vite
