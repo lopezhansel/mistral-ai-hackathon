@@ -2,7 +2,8 @@ import { z } from "zod";
 import { db, schema } from "@app/db";
 import { router, publicProcedure } from "./trpc";
 import { eq } from "drizzle-orm";
-import { runPromptRewrite } from "../../runPromptRewrite";
+
+import { runPromptRewrite } from "./runPromptRewrite";
 
 const AnimationStatus = {
   READY: "READY",

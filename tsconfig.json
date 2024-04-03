@@ -24,6 +24,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["frontend/src", "backend/src", "db/src"],
+  "include": ["frontend/src", "backend/src", "db/src", "trpc/src"],
   "references": [{ "path": "./frontend/tsconfig.node.json" }]
 }

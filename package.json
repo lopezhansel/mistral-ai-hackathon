@@ -12,6 +12,7 @@
   "workspaces": [
     "frontend",
     "backend",
-    "db"
- ]
+    "db",
+    "trpc"
+  ]
 }

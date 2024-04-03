@@ -1,0 +1,20 @@
+{
+  "name": "@app/trpc",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.ts",
+  "devDependencies": {
+    "@trpc/client": "^11.0.0-next.327"
+  },
+  "dependencies": {
+    "@trpc/server": "^11.0.0-next.327"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
