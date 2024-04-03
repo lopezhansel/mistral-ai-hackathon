@@ -8,7 +8,6 @@ export const server = Fastify({
   maxParamLength: 5000,
 });
 
-server.register(plugins.cors);
 await server.register(plugins.staticDir);
 await server.register(plugins.vite);
 server.register(plugins.trpc)
