@@ -1,12 +1,10 @@
 import FastifyVite, { type FastifyViteOptions } from "@fastify/vite";
 import fastifyPlugin from "fastify-plugin";
 import { fileURLToPath } from "node:url";
-import { resolve, dirname } from "node:path";
 
 export const vite = fastifyPlugin(async function (fastify) {
-  const viteCofigPath = resolve(
-    dirname(fileURLToPath(import.meta.url)),
-    "../../../../frontend/vite.config.ts"
+  const viteCofigPath = fileURLToPath(
+    new URL("../../../../frontend/vite.config.ts", import.meta.url)
   );
   const viteOptions = {
     root: viteCofigPath,
