@@ -1,4 +1,4 @@
-import { createTRPCClient, httpBatchLink } from '@trpc/client';
+import { createTRPCClient, httpBatchLink } from "@trpc/client";
 import type { AppRouter } from "../appRouter";
 
 // Pass AppRouter as generic here. 👇 This lets the `trpc` object know
@@ -6,7 +6,7 @@ import type { AppRouter } from "../appRouter";
 export const client = createTRPCClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: 'http://localhost:2389',
+      url: "http://localhost:2389",
     }),
   ],
 });

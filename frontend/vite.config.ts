@@ -1,12 +1,11 @@
-import { defineConfig } from 'vite'
-import { dirname, resolve } from 'node:path'
-import viteReact from '@vitejs/plugin-react'
-import { fileURLToPath } from 'node:url'
+import { defineConfig } from "vite";
+import { dirname, resolve } from "node:path";
+import viteReact from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
 
-const pathDir = dirname(fileURLToPath(import.meta.url))
-const frontendDir = resolve(pathDir, './')
-const frontendSrcDir = resolve(pathDir, 'src')
-
+const pathDir = dirname(fileURLToPath(import.meta.url));
+const frontendDir = resolve(pathDir, "./");
+const frontendSrcDir = resolve(pathDir, "src");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +13,7 @@ export default defineConfig({
   plugins: [viteReact()],
   resolve: {
     alias: {
-      '@': frontendSrcDir,
+      "@": frontendSrcDir,
     },
   },
-})
+});
