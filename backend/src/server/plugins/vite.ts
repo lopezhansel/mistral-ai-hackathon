@@ -7,7 +7,7 @@ import fastifyPlugin from 'fastify-plugin'
 export const vite = fastifyPlugin(async function (fastify) {
   const root = resolve(
     dirname(fileURLToPath(import.meta.url)),
-    '../../../'
+    '../../../../vite.config.ts'
   );
   const viteOptions = {
     root: root,

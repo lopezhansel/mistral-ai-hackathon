@@ -7,19 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+node_modules/
 
 # Backend
 backend/khan-classes*/
 backend/__pycache__
-backend/node_modules
 backend/venv
-backend/.env
+.env
 *.sqlite
 
 # Frontend
-frontend/node_modules
-frontend/.vite
+.vite
 
 playground/
 *.local
