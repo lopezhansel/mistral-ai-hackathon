@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "src/index",
+  "main": "backend/src/index",
   "scripts": {
     "db-orm": "drizzle-kit",
-    "start": "npx tsx src/index",
-    "dev": "npx tsx src/index --dev",
+    "start": "npx tsx backend/src/index",
+    "dev": "npx tsx backend/src/index --dev",
+    "watch": "npx tsx watch --ignore ./ignore-me.js backend/src/index --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
