@@ -1,14 +1,14 @@
 import animatePlugin from "tailwindcss-animate";
+import { fileURLToPath } from "node:url";
+
+const frontendDir = fileURLToPath(new URL("./", import.meta.url));
 
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
   content: [
-    "frontend/index.html",
-    "frontend/src/**/*.{js,ts,jsx,tsx}",
-    "frontend/pages/**/*.{ts,tsx}",
-    "frontend/components/**/*.{ts,tsx}",
-    "frontend/app/**/*.{ts,tsx}",
+    frontendDir.concat("index.html"),
+    frontendDir.concat("src/**/*.{js,ts,jsx,tsx}"),
   ],
   prefix: "",
   theme: {
