@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "@app/backend",
   "version": "1.0.0",
   "description": "",
   "type": "module",
