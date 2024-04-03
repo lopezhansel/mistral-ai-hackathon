@@ -2,9 +2,11 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import Database from "better-sqlite3";
 
 import * as schema from "./schema";
-import { dbCredentials } from "../drizzle.config.json";
+import { fileURLToPath } from "url";
 
-const sqliteClient = new Database(dbCredentials.url, { fileMustExist: true });
+const dbUrl = fileURLToPath(new URL("../local-db.sqlite", import.meta.url));
+
+const sqliteClient = new Database(dbUrl, { fileMustExist: true });
 export const db = drizzle(sqliteClient, {
   schema,
   logger: true,
