@@ -2,8 +2,22 @@ import Fastify from "fastify";
 
 import * as plugins from "./plugins";
 
+const envToLogger = {
+  development: {
+    transport: {
+      target: "pino-pretty",
+      options: {
+        translatetime: "hh:mm:ss z",
+        ignore: "pid,hostname",
+      },
+    },
+  },
+  production: true,
+  test: false,
+};
+
 export const server = Fastify({
-  logger: true,
+  logger: envToLogger.development,
   // Larger maxParamLength is needed for trpc query params
   maxParamLength: 5000,
 });
