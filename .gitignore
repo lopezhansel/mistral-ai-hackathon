@@ -20,6 +20,9 @@ python/venv
 
 # Frontend
 .vite
+# Frontend - build files
+dist/
+tsconfig.tsbuildinfo
 
 playground/
 *.local
