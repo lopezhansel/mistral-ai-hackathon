@@ -15,6 +15,7 @@ backend/__pycache__
 backend/node_modules
 backend/venv
 backend/.env
+*.sqlite
 
 # Frontend
 frontend/node_modules
