@@ -1,8 +1,8 @@
-import React from "react";
+import { useRef } from "react";
 import "./Video.css";
 
 function Video({ videoSrc, audioSrc }: { videoSrc: string; audioSrc: string }) {
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   return (
     <>
