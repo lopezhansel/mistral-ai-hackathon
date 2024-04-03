@@ -7,7 +7,7 @@ import { resolve, dirname } from 'node:path'
 export const vite = fastifyPlugin(async function (fastify) {
   const viteCofigPath = resolve(
     dirname(fileURLToPath(import.meta.url)),
-    '../../../../vite.config.ts'
+    '../../../../frontend/vite.config.ts'
   );
   const viteOptions = {
     root: viteCofigPath,
