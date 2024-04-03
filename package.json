@@ -4,8 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "npx tsx backend/src/index",
-    "dev": "npx tsx backend/src/index --dev"
+    "start": "npm run start --workspace=backend",
+    "dev": "npm run dev --workspace=backend"
   },
   "author": "",
   "license": "ISC",
