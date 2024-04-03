@@ -11,6 +11,7 @@
   "license": "ISC",
   "workspaces": [
     "frontend",
-    "backend"
-  ]
+    "backend",
+    "db"
+ ]
 }

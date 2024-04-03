@@ -1,9 +1,9 @@
 {
-  "schema": "./src/server/db/schema/index.ts",
+  "schema": "./src/schema/index.ts",
   "out": "./migrations",
   "driver": "better-sqlite",
   "dbCredentials": {
-    "url": "./backend/local-db.sqlite"
+    "url": "./local-db.sqlite"
   },
   "verbose": true,
   "strict": true

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { db, schema } from "../db";
+import { db, schema } from "db";
 import { router, publicProcedure } from "./trpc";
 import { eq } from "drizzle-orm";
 import { runPromptRewrite } from "../../runPromptRewrite";
