@@ -8,6 +8,14 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@repo/frontend": ["../frontend/src"],
+      "@repo/trpc": ["../trpc/src"],
+      "@repo/db": ["../db/src"],
+      "@repo/chat": ["../chat/src"],
+      "@repo/backend": ["../backend/src"]
+    }
   }
 }

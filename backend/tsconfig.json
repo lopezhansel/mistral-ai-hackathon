@@ -3,9 +3,16 @@
   "extends": "../tsconfig.node.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "composite": true,
     "outDir": "dist"
   },
   "include": ["src"],
-  "references": [{ "path": "../db" }]
+  "references": [
+    {
+      "path": "../trpc"
+    },
+    
+    {
+      "path": "../chat"
+    }
+  ]
 }
