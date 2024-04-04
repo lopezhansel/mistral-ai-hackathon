@@ -5,11 +5,11 @@
   "type": "module",
   "main": "src/index",
   "scripts": {
-    "start": "npx tsx src/index",
+    "start": "tsx --env-file='../.env' src/index",
     "build": "tsc --build",
     "build:watch": "tsc --watch",
     "clean": "tsc --build --clean",
-    "dev": "npx tsx src/index --dev"
+    "dev": "tsx --env-file='../.env' src/index --dev"
   },
   "dependencies": {
     "@fastify/static": "^7.0.1",
@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.30",
-    "pino-pretty": "^11.0.0"
+    "pino-pretty": "^11.0.0",
+    "tsx": "^4.7.2"
   },
   "author": "",
   "license": "ISC"
