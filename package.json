@@ -9,7 +9,7 @@
     "build": "npm run build --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "format": "biome check --apply ./",
+    "format": "biome check --apply frontend backend db trpc $(ls *.json .*.cjs)",
     "test": "npm run test --workspaces --if-present"
   },
   "author": "",

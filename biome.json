@@ -2,27 +2,16 @@
   "$schema": "https://biomejs.dev/schemas/1.6.4/schema.json",
   "files": {
     "include": [
-      "**/*.js",
-      "**/*.jsx",
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.mts",
-      "**/*.cjs",
-      "**/*.json",
-      "biome.json",
-      "package-lock.json",
-      "package.json",
-      "tsconfig.node.json",
-      ".eslintrc.cjs"
+      "*.cjs",
+      "*.mjs",
+      "*.js",
+      "*.jsx",
+      "*.mts",
+      "*.ts",
+      "*.tsx",
+      "*.json"
     ],
-    "ignore": [
-      "**/dist",
-      "**/node_modules",
-      "node_modules",
-      ".vscode",
-      ".venv",
-      "python"
-    ]
+    "ignore": ["dist", "node_modules"]
   },
   "organizeImports": {
     "enabled": true
