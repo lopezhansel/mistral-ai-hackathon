@@ -14,7 +14,7 @@
   },
   "author": "",
   "license": "ISC",
-  "workspaces": ["frontend", "backend", "db", "trpc"],
+  "workspaces": ["frontend", "backend", "db", "trpc", "chat"],
   "devDependencies": {
     "@biomejs/biome": "1.6.4"
   }

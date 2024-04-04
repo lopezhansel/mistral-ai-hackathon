@@ -1,0 +1,19 @@
+{
+  "name": "@repo/chat",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc --build",
+    "build:watch": "tsc --watch",
+    "clean": "tsc --build --clean"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.4"
+  }
+}
