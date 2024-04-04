@@ -5,6 +5,9 @@
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
+    "build": "tsc --build",
+    "build:watch": "tsc --watch",
+    "clean": "tsc --build --clean",
     "db-orm": "drizzle-kit"
   },
   "dependencies": {

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "check": "tsc",
+    "clean": "tsc --build --clean",
+    "build:watch": "tsc --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "bundle-visualizer": "npx vite-bundle-visualizer",
     "preview": "vite preview"

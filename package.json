@@ -6,9 +6,10 @@
   "scripts": {
     "start": "npm run start --workspace=backend",
     "dev": "npm run dev --workspace=backend",
-    "build": "npm run build --workspaces--workspaces --if-present",
-    "lint": "npm run lint --workspaces--workspaces --if-present",
-    "check": "npm run check --workspaces --if-present"
+    "build": "npm run build --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
   },
   "author": "",
   "license": "ISC",
