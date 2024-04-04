@@ -1,1 +1,1 @@
-export * from "./appRouter";
+export * from "./router/appRouter";
