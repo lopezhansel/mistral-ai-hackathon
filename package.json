@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npm run start --workspace=backend",
     "dev": "npm run dev --workspace=backend",
-    "build": "npm run build --workspace frontend"
+    "build": "npm run build --workspaces--workspaces --if-present",
+    "lint": "npm run lint --workspaces--workspaces --if-present",
+    "check": "npm run check --workspaces --if-present"
   },
   "author": "",
   "license": "ISC",
