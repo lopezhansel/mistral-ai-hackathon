@@ -9,17 +9,12 @@
     "build": "npm run build --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "format": "biome format check --apply frontend",
+    "format": "biome check --apply ./",
     "test": "npm run test --workspaces --if-present"
   },
   "author": "",
   "license": "ISC",
-  "workspaces": [
-    "frontend",
-    "backend",
-    "db",
-    "trpc"
-  ],
+  "workspaces": ["frontend", "backend", "db", "trpc"],
   "devDependencies": {
     "@biomejs/biome": "1.6.4"
   }
