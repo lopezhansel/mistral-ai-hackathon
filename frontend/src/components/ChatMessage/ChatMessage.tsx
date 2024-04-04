@@ -1,9 +1,9 @@
+import { trpc } from "@/lib/trpc";
 import { useQueryClient } from "@tanstack/react-query";
-import "./ChatMessage.css";
+import { getQueryKey } from "@trpc/react-query";
 import { useEffect } from "react";
 import Video from "../Video/Video";
-import { trpc } from "@/lib/trpc";
-import { getQueryKey } from "@trpc/react-query";
+import "./ChatMessage.css";
 
 export type Message = {
   status: string;
@@ -26,7 +26,7 @@ function useGetAnimation(animationId: number) {
     const animationKey = getQueryKey(
       trpc.animation.getById,
       animationId,
-      "query"
+      "query",
     );
     const timeout = setInterval(() => {
       queryClient.invalidateQueries({

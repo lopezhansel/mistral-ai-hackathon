@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import ChatMessage from "../ChatMessage/ChatMessage";
 import ChatInput from "../ChatInput/ChatInput";
+import ChatMessage from "../ChatMessage/ChatMessage";
 
-import "./Chat.css";
 import { trpc } from "@/lib/trpc";
+import "./Chat.css";
 
 function Chat() {
   const useCreateAnimation = trpc.animation.create.useMutation();

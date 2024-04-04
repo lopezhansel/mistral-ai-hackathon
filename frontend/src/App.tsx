@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Home from "./pages/Home/Home";
 import "./App.css";
+import Home from "./pages/Home/Home";
 
 import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
@@ -15,7 +15,7 @@ function App() {
           url: "/trpc",
         }),
       ],
-    })
+    }),
   );
 
   return (

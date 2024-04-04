@@ -1,5 +1,5 @@
-import animatePlugin from "tailwindcss-animate";
 import { fileURLToPath } from "node:url";
+import animatePlugin from "tailwindcss-animate";
 
 const frontendDir = fileURLToPath(new URL("./", import.meta.url));
 
