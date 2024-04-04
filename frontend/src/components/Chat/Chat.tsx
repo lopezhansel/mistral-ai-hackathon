@@ -1,8 +1,9 @@
+import { trpc } from "@/lib/trpc";
 import { useEffect, useState } from "react";
+
 import ChatInput from "../ChatInput/ChatInput";
 import ChatMessage from "../ChatMessage/ChatMessage";
 
-import { trpc } from "@/lib/trpc";
 import "./Chat.css";
 
 function Chat() {

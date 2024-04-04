@@ -1,10 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import "./App.css";
-import Home from "./pages/Home/Home";
-
 import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
+
 import { trpc } from "./lib/trpc";
+import Home from "./pages/Home/Home";
+
+import "./App.css";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
