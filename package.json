@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "npm run start --workspace=backend",
-    "dev": "npm run dev --workspace=backend"
+    "dev": "npm run dev --workspace=backend",
+    "build": "npm run build --workspace frontend"
   },
   "author": "",
   "license": "ISC",
