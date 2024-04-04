@@ -5,11 +5,9 @@
     "target": "ES2020",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   }
 }
