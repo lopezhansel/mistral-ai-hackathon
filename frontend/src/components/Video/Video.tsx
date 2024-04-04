@@ -6,6 +6,7 @@ function Video({ videoSrc, audioSrc }: { videoSrc: string; audioSrc: string }) {
 
   return (
     <>
+      {/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
       <video
         src={videoSrc}
         width="750"
@@ -21,6 +22,7 @@ function Video({ videoSrc, audioSrc }: { videoSrc: string; audioSrc: string }) {
       >
         Your browser does not support the video tag.
       </video>
+      {/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
       <audio
         ref={audioRef}
         id="audioPlayer"
