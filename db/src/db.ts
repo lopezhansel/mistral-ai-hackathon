@@ -1,7 +1,4 @@
 import { drizzle } from "drizzle-orm/better-sqlite3";
-// tsconfig.allowSyntheticDefaultImports is not enabled
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import Database from "better-sqlite3";
 import * as schema from "./schema";
 import { fileURLToPath } from "url";
