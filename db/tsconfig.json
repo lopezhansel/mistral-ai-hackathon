@@ -6,6 +6,5 @@
     "composite": true,
     "outDir": "dist"
   },
-  "include": ["src"],
-  "references": [{ "path": "../db" }]
+  "include": ["src"]
 }
