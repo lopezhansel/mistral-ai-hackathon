@@ -2,7 +2,7 @@ import {
   fastifyTRPCPlugin,
   FastifyTRPCPluginOptions,
 } from "@trpc/server/adapters/fastify";
-import { AppRouter, appRouter } from "@app/trpc";
+import { AppRouter, appRouter } from "@repo/trpc";
 
 import fastifyPlugin from "fastify-plugin";
 

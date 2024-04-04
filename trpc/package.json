@@ -1,5 +1,5 @@
 {
-  "name": "@app/trpc",
+  "name": "@repo/trpc",
   "private": true,
   "version": "1.0.0",
   "type": "module",

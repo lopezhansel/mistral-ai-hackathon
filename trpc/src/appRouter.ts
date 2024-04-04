@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { db, schema } from "@app/db";
+import { db, schema } from "@repo/db";
 import { router, publicProcedure } from "./trpc";
 import { eq } from "drizzle-orm";
 
