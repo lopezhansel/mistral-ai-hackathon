@@ -25,5 +25,12 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "references": [{ "path": "../trpc" }]
+  "references": [
+    {
+      "path": "../trpc"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
