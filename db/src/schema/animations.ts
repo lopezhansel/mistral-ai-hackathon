@@ -1,5 +1,5 @@
-import { text, integer, sqliteTable } from "drizzle-orm/sqlite-core";
 import { sql } from "drizzle-orm";
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const animations = sqliteTable("animations", {
   animationId: integer("animation_id", { mode: "number" }).primaryKey(),
@@ -10,7 +10,5 @@ export const animations = sqliteTable("animations", {
   video: text("video"),
   animation_code: text("animation_code"),
   animationInstructions: text("animation_instructions"),
-  createdAt: text("created_at")
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });

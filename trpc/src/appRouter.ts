@@ -1,7 +1,7 @@
-import { z } from "zod";
 import { db, schema } from "@repo/db";
-import { router, publicProcedure } from "./trpc";
 import { eq } from "drizzle-orm";
+import { z } from "zod";
+import { publicProcedure, router } from "./trpc";
 
 import { runPromptRewrite } from "./runPromptRewrite";
 
@@ -16,7 +16,7 @@ export const animationRouter = router({
     .input(
       z.object({
         prompt: z.string(),
-      })
+      }),
     )
     .mutation(async ({ input: { prompt } }) => {
       const animaitonValues = {
@@ -76,7 +76,7 @@ const userRouter = router({
         phone: z.string(),
         firstName: z.string(),
         lastName: z.string(),
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const [id] = await db

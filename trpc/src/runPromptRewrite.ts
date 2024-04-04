@@ -1,14 +1,14 @@
-import { createWriteStream } from "node:fs";
 import { spawn } from "node:child_process";
+import { createWriteStream } from "node:fs";
 import { join } from "node:path";
 
 export function runPromptRewrite(prompt = "", uuid = "") {
   return new Promise((resolve, reject) => {
     const stdOutFile = createWriteStream(
-      join(process.cwd(), "khan-classes", `${uuid}-stdout.log`)
+      join(process.cwd(), "khan-classes", `${uuid}-stdout.log`),
     );
     const stdErrFile = createWriteStream(
-      join(process.cwd(), "khan-classes", `${uuid}-stderr.log`)
+      join(process.cwd(), "khan-classes", `${uuid}-stderr.log`),
     );
     const args = ["./run_prompt_rewrite.sh", prompt, uuid];
     const childProcess = spawn("bash", args, {

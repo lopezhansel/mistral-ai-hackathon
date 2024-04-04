@@ -1,12 +1,12 @@
+import { type AppRouter, appRouter } from "@repo/trpc";
 import {
+  type FastifyTRPCPluginOptions,
   fastifyTRPCPlugin,
-  FastifyTRPCPluginOptions,
 } from "@trpc/server/adapters/fastify";
-import { AppRouter, appRouter } from "@repo/trpc";
 
 import fastifyPlugin from "fastify-plugin";
 
-export const trpc = fastifyPlugin(function (fastify, _opts, done) {
+export const trpc = fastifyPlugin((fastify, _opts, done) => {
   fastify.register(fastifyTRPCPlugin, {
     prefix: "/trpc",
     trpcOptions: {

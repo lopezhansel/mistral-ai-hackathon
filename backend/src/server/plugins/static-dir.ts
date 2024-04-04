@@ -1,12 +1,12 @@
+import { fileURLToPath } from "node:url";
 import fastifyStaticDirPlugin from "@fastify/static";
 import fastifyPlugin from "fastify-plugin";
-import { fileURLToPath } from "node:url";
 
 const kahnClassesDir = fileURLToPath(
-  new URL("../../../khan-classes", import.meta.url)
+  new URL("../../../khan-classes", import.meta.url),
 );
 
-export const staticDir = fastifyPlugin(async function (fastify) {
+export const staticDir = fastifyPlugin(async (fastify) => {
   await fastifyStaticDirPlugin(fastify, {
     root: kahnClassesDir,
     prefix: "/public/",

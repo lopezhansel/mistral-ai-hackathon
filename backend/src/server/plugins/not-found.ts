@@ -1,4 +1,4 @@
-import { type FastifyRequest } from "fastify";
+import type { FastifyRequest } from "fastify";
 import fastifyPlugin from "fastify-plugin";
 
 declare module "fastify" {
@@ -7,7 +7,7 @@ declare module "fastify" {
   }
 }
 
-export const notFound = fastifyPlugin(function (server, _opts, done) {
+export const notFound = fastifyPlugin((server, _opts, done) => {
   server.decorate("notFound", (_request, reply) => {
     reply.code(404).type("text/html").send("Not Found");
   });
