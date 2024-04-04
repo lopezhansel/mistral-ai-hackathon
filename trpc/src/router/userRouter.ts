@@ -10,7 +10,7 @@ export const userRouter = router({
         phone: z.string(),
         firstName: z.string(),
         lastName: z.string(),
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const [id] = await db

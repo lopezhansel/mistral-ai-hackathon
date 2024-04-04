@@ -1,5 +1,5 @@
-import { z } from "zod";
 import { sendMessage } from "@repo/chat";
+import { z } from "zod";
 import { publicProcedure, router } from "../trpc";
 
 export const chatRouter = router({
