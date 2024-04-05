@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1712347832410,
-      "tag": "0000_white_juggernaut",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1712347999402,
-      "tag": "0001_dashing_khan",
+      "when": 1712353756812,
+      "tag": "0000_dashing_nicolaos",
       "breakpoints": true
     }
   ]

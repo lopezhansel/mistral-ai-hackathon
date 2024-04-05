@@ -1,0 +1,10 @@
+{
+  "schema": "./schema/index.ts",
+  "out": "./migrations",
+  "driver": "better-sqlite",
+  "dbCredentials": {
+    "url": "./play-db.sqlite"
+  },
+  "verbose": true,
+  "strict": true
+}
