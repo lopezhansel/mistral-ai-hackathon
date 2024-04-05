@@ -15,5 +15,3 @@ import { db } from "./db";
     console.log(e);
   }
 })();
-
-// Don't forget to close the connection, otherwise the script will hang
