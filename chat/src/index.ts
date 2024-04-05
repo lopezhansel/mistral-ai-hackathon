@@ -1,8 +1,12 @@
 import { HumanMessage } from "@langchain/core/messages";
-import { openai } from "./openai";
+import { gpt3 } from "./openai";
 
 export async function sendMessage(prompt: string): Promise<string | undefined> {
-  const message = await openai.invoke([new HumanMessage(prompt)]);
+  if (process.argv.includes("--dev")) {
+    return "What some useful things I can do with the `sed` command in bash?";
+  }
+  const conversation = [new HumanMessage(prompt)];
+  const message = await gpt3.invoke(conversation);
 
   if (typeof message.content === "string") {
     return message.content;
