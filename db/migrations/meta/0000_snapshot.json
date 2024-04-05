@@ -64,7 +64,7 @@
           "notNull": false
         },
         "created_at": {
-          "default": "(CURRENT_TIMESTAMP)",
+          "default": "CURRENT_TIMESTAMP",
           "autoincrement": false,
           "name": "created_at",
           "type": "text",
@@ -109,7 +109,7 @@
           "notNull": false
         },
         "created_at": {
-          "default": "(CURRENT_TIMESTAMP)",
+          "default": "CURRENT_TIMESTAMP",
           "autoincrement": false,
           "name": "created_at",
           "type": "text",
