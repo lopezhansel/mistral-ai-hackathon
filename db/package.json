@@ -10,6 +10,14 @@
     "build:watch": "tsc --watch",
     "clean": "tsc --build --clean",
     "orm": "drizzle-kit",
+    "orm-drop": "drizzle-kit drop",
+    "orm-generate": "drizzle-kit generate:sqlite",
+    "orm-check": "drizzle-kit check:sqlite",
+    "orm-push": "drizzle-kit push:sqlite",
+    "orm-introspect": "drizzle-kit introspect:sqlite",
+    "orm-up": "drizzle-kit up:sqlite",
+    "orm-studio": "drizzle-kit studio --port 3001",
+    "orm-migrate": "tsx src/run-migrations.ts",
     "playground": "tsx watch src/play/main.ts"
   },
   "dependencies": {
