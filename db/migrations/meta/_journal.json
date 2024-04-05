@@ -22,6 +22,13 @@
       "when": 1712358526023,
       "tag": "0002_curved_thena",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1712359045959,
+      "tag": "0003_lovely_omega_sentinel",
+      "breakpoints": true
     }
   ]
 }

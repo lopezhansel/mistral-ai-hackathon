@@ -22,10 +22,10 @@ export const animations = sqliteTable("animations", {
 
 export const users = sqliteTable("users", {
   id: integer("id").primaryKey().notNull(),
-  firstName: text("first_name"),
-  lastName: text("last_name"),
+  firstName: text("firstName"),
+  lastName: text("lastName"),
   phone: numeric("phone"),
-  createdAt: text("created_at").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
+  createdAt: text("createdAt").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
   userName: text("userName"),
   email: text("email"),
 });
