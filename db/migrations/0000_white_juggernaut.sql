@@ -1,7 +1,4 @@
--- Current sql file was generated after introspecting the database
--- If you want to run this migration please uncomment this code before executing migrations
-/*
-CREATE TABLE `animations` (
+CREATE TABLE IF NOT EXISTS `animations` (
 	`animation_id` integer PRIMARY KEY NOT NULL,
 	`prompt` text,
 	`status` text,
@@ -13,7 +10,7 @@ CREATE TABLE `animations` (
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `users` (
+CREATE TABLE IF NOT EXISTS `users` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`first_name` text,
 	`last_name` text,
@@ -21,5 +18,3 @@ CREATE TABLE `users` (
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`int_modifiers` integer DEFAULT false NOT NULL
 );
-
-*/
