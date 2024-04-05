@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "@repo/db",
   "version": "1.0.0",
   "description": "",
@@ -8,7 +9,8 @@
     "build": "tsc --build",
     "build:watch": "tsc --watch",
     "clean": "tsc --build --clean",
-    "db-orm": "drizzle-kit"
+    "orm": "drizzle-kit",
+    "playground": "tsx watch src/play/main.ts"
   },
   "dependencies": {
     "better-sqlite3": "^9.4.3",

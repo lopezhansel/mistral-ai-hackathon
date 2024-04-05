@@ -1,5 +1,5 @@
 import { db } from "./db";
-import * as schema from "./schema";
+import * as schema from "../schema";
 
 (async () => {
   try {
