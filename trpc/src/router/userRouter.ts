@@ -16,7 +16,7 @@ export const userRouter = router({
       const [id] = await db
         .insert(schema.users)
         .values(input)
-        .returning({ id: schema.users.id });
+        .returning({ id: schema.users.userId });
       return id;
     }),
   list: publicProcedure.query(async () => {
@@ -26,7 +26,7 @@ export const userRouter = router({
   getById: publicProcedure.input(z.number()).query(async (opts) => {
     const { input } = opts;
     const user = await db.query.users.findFirst({
-      where: eq(schema.users.id, input),
+      where: eq(schema.users.userId, input),
     });
 
     return user;

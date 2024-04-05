@@ -8,9 +8,9 @@ export const conversations = sqliteTable("conversations", {
   }),
   startedByUserID: integer("startedByUserID")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.userId),
   startedWithUserID: integer("startedWithUserID")
     .notNull()
-    .references(() => users.id),
+    .references(() => users.userId),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 });

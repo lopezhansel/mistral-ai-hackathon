@@ -4,7 +4,7 @@ import { users } from "../schema";
 const queries = new QueryBuilder();
 const output = queries
   .select({
-    user: users.id,
+    user: users.userId,
   })
   .from(users)
   .toSQL().sql;

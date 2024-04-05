@@ -2,7 +2,7 @@ import { sql } from "drizzle-orm";
 import { integer, numeric, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("users", {
-  id: integer("id", { mode: "number" }).primaryKey(),
+  userId: integer("id", { mode: "number" }).primaryKey(),
   userName: text("userName"),
   email: text("email"),
   firstName: text("firstName"),
