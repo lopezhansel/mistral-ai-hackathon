@@ -169,12 +169,8 @@
           "name": "conversations_startedByUserID_users_id_fk",
           "tableFrom": "conversations",
           "tableTo": "users",
-          "columnsFrom": [
-            "startedByUserID"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["startedByUserID"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -182,12 +178,8 @@
           "name": "conversations_startedWithUserID_users_id_fk",
           "tableFrom": "conversations",
           "tableTo": "users",
-          "columnsFrom": [
-            "startedWithUserID"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["startedWithUserID"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
