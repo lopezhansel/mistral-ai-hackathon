@@ -26,7 +26,8 @@ export const users = sqliteTable("users", {
   lastName: text("last_name"),
   phone: numeric("phone"),
   createdAt: text("created_at").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
-  intModifiers: integer("int_modifiers").default(false).notNull(),
+  userName: text("userName"),
+  email: text("email"),
 });
 
 export const drizzleMigrations = sqliteTable("__drizzle_migrations", {

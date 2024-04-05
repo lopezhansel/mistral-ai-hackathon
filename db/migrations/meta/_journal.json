@@ -15,6 +15,13 @@
       "when": 1712357705386,
       "tag": "0001_flaky_justin_hammer",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1712358526023,
+      "tag": "0002_curved_thena",
+      "breakpoints": true
     }
   ]
 }
