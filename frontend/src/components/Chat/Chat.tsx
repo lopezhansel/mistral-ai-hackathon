@@ -1,5 +1,5 @@
 import { trpc } from "@/lib/trpc";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import ChatInput from "../ChatInput/ChatInput";
 import ChatMessage from "../ChatMessage/ChatMessage";
@@ -7,35 +7,38 @@ import ChatMessage from "../ChatMessage/ChatMessage";
 import "./Chat.css";
 
 function Chat() {
-  const useCreateAnimation = trpc.animation.create.useMutation();
-  const [messageIds, setMessages] = useState<number[]>([]);
-  const animationId = useCreateAnimation?.data?.animationId;
+  const useCreateAnimation = trpc.chat.sendMessage.useMutation();
+  const [messages, setMessages] = useState<string[]>([]);
+  const reply = useCreateAnimation?.data;
 
-  function updateMessages(id: number) {
-    if (messageIds.includes(id)) {
-      return;
-    }
+  const updateMessages = useCallback(
+    function updateMessages(message: string) {
+      setMessages([...messages, message]);
+    },
+    [messages],
+  );
 
-    setMessages([...messageIds, id]);
-  }
-
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (animationId) {
-      updateMessages(animationId);
+    if (reply) {
+      updateMessages(reply);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [animationId]);
+  }, [reply]);
 
   return (
     <div className="chat__container max-w-7xl w-full m-auto h-screen flex flex-col p-4">
       <div className="chat__messages flex-grow">
-        {messageIds.map((id) => (
-          <ChatMessage messageId={id} key={id} />
-        ))}
+        <div className="chat-message__container flex flex-col gap-3">
+          {messages.map((msg) => (
+            <ChatMessage message={msg} key={msg} />
+          ))}
+        </div>
       </div>
       <ChatInput
-        onSubmit={(prompt) => {
-          useCreateAnimation.mutate({ prompt });
+        onSubmit={(message) => {
+          useCreateAnimation.mutate(message);
+          updateMessages(message);
         }}
       />
     </div>
