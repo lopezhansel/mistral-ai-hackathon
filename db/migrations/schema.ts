@@ -9,7 +9,7 @@ import {
 } from "drizzle-orm/sqlite-core";
 
 export const animations = sqliteTable("animations", {
-  animationId: integer("animation_id").primaryKey().notNull(),
+  animationId: integer("animationId").primaryKey().notNull(),
   prompt: text("prompt"),
   status: text("status"),
   username: text("username"),

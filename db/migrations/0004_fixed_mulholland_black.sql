@@ -1,0 +1,1 @@
+ALTER TABLE `animations` RENAME COLUMN `animation_id` TO `animationId`;
