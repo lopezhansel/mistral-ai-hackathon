@@ -1,91 +1,72 @@
-import { eq } from "drizzle-orm";
-import type { SQLiteInsertValue } from "drizzle-orm/sqlite-core";
-import { db } from "../db";
-import * as schema from "../schema";
+import { type InsertUser, User } from "./User";
 
-async function createUser(values: SQLiteInsertValue<typeof schema.users>) {
-  const users = await db.insert(schema.users).values(values).returning();
+const testUsers: Record<string, InsertUser> = {
+  alice: {
+    userName: "aliceRocks",
+    email: "aliceRocks@email.com",
+    firstName: "Alice",
+    lastName: "Rocks",
+  },
+  bob: {
+    userName: "bobRocks",
+    email: "bobRocks@email.com",
+    firstName: "Bob",
+    lastName: "Rocks",
+  },
+  charlie: {
+    userName: "chalie",
+    email: "chalieRocks@email.com",
+    firstName: "Chalie",
+    lastName: "Rocks",
+  },
+  delphi: {
+    userName: "Delphi",
+    email: "DelphiRocks@email.com",
+    firstName: "Delphi",
+    lastName: "Rocks",
+  },
+  echo: {
+    userName: "Echo",
+    email: "EchoRocks@email.com",
+    firstName: "Echo",
+    lastName: "Rocks",
+  },
+};
 
-  return users[0];
-}
-
-async function createConveration(
-  values: Pick<
-    SQLiteInsertValue<typeof schema.conversations>,
-    "startedByUserID" | "startedWithUserID"
-  >,
-) {
-  const [conversation] = await db
-    .insert(schema.conversations)
-    .values(values)
-    .returning();
-
-  return conversation;
-}
-
-async function createConverationMessage(
-  values: SQLiteInsertValue<typeof schema.messages>,
-) {
-  const [msg] = await db.insert(schema.messages).values(values).returning();
-
-  return msg;
-}
+const testMessage = ["Hey! How it going?", `Hey ! I'm doing good thanks!`];
 
 (async () => {
+  testUsers;
+  testMessage;
   try {
-    // "Hi Alice, I need help with my app."
-    // await createUser({
-    //   userName: "aliceRocks",
-    //   email: "aliceRocks@email.com",
-    //   firstName: "Alice",
-    //   lastName: "Rocks",
-    // });
-    // await createUser({
-    //     userName: "bobRocks",
-    //     email: "bobRocks@email.com",
-    //     firstName: "Bob",
-    //     lastName: "Rocks",
-    //   });
-
     const output: Record<string, unknown> = {};
 
-    const chalie = await createUser({
-      userName: "chalie",
-      email: "chalieRocks@email.com",
-      firstName: "Chalie",
-      lastName: "Rocks",
-    });
-    output.chalie = chalie;
+    // const chalie = await User.create(testUsers.chalie);
+    // output.chalie = chalie;
 
-    const bob = await db.query.users.findFirst({
-      where: eq(schema.users.userId, 5),
-      with: {
-        conversations: {
-          with: {
-            messages: true,
-          },
-        },
-      },
-    });
-    output.bob = bob;
-    const [convo] = Array.isArray(bob?.conversations) ? bob.conversations : [];
-    output.convo = convo;
+    // const delphi = await User.create(testUsers.delphi);
+    // output.delphi = delphi;
 
-    const convesation = await db.query.conversations.findFirst({
-      where: eq(schema.conversations.conversationsId, convo.conversationsId),
-      with: {
-        messages: true,
-        author: true,
-      },
-    });
-    output.convesation = convesation;
+    // const echo = await User.create(testUsers.echo);
+    // output.echo = echo;
 
-    const conversations = await db.query.users.findFirst({
-      with: {
-        conversations: true,
-      },
-    });
-    output.conversations = conversations;
+    // const convesation = await delphi.createConvesation(echo.userId);
+    // output.convesation = convesation;
+
+    // const message1 = await delphi.sendMessage(
+    //   convesation.conversationsId,
+    //   testMessage[0],
+    // );
+
+    // output.message1 = message1;
+
+    // const message2 = await echo.sendMessage(
+    //   convesation.conversationsId,
+    //   testMessage[1],
+    // );
+    // output.message2 = message2;
+    const user = await User.findUser(7);
+    output.user = user;
 
     console.dir(output, { depth: null });
   } catch (e) {
