@@ -1,70 +1,62 @@
 import { eq } from "drizzle-orm";
+import type { SQLiteInsertValue } from "drizzle-orm/sqlite-core";
 import { db } from "../db";
 import * as schema from "../schema";
 
+async function createUser(values: SQLiteInsertValue<typeof schema.users>) {
+  const users = await db.insert(schema.users).values(values).returning();
+
+  return users[0];
+}
+
+async function createConveration(
+  values: Pick<
+    SQLiteInsertValue<typeof schema.conversations>,
+    "startedByUserID" | "startedWithUserID"
+  >,
+) {
+  const [conversation] = await db
+    .insert(schema.conversations)
+    .values(values)
+    .returning();
+
+  return conversation;
+}
+
+async function createConverationMessage(
+  values: SQLiteInsertValue<typeof schema.messages>,
+) {
+  const [msg] = await db.insert(schema.messages).values(values).returning();
+
+  return msg;
+}
+
 (async () => {
   try {
-    // const [alice] = await db
-    //   .insert(schema.users)
-    //   .values({
-    //     userName: "aliceRocks",
-    //     email: "aliceRocks@email.com",
-    //     firstName: "Alice",
-    //     lastName: "Rocks",
-    //   })
-    //   .returning({
-    //     id: schema.users.userId,
-    //   });
-    // const [bob] = await db
-    //   .insert(schema.users)
-    //   .values({
+    // "Hi Alice, I need help with my app."
+    // await createUser({
+    //   userName: "aliceRocks",
+    //   email: "aliceRocks@email.com",
+    //   firstName: "Alice",
+    //   lastName: "Rocks",
+    // });
+    // await createUser({
     //     userName: "bobRocks",
     //     email: "bobRocks@email.com",
     //     firstName: "Bob",
     //     lastName: "Rocks",
-    //   })
-    //   .returning({
-    //     id: schema.users.userId,
-    //   });
-
-    // const { conversations } = schema;
-    // const { conversationsId } = conversations;
-    // const [conversation] = await db
-    //   .insert(schema.conversations)
-    //   .values({
-    //     startedByUserID: bob.id,
-    //     startedWithUserID: alice.id,
-    //   })
-    //   .returning({
-    //     conversationsId,
-    //   });
-
-    // conversation.conversationsId;
-
-    // const { messageId } = schema.messages;
-    // await db
-    //   .insert(schema.messages)
-    //   .values({
-    //     conversationId: conversation.conversationsId,
-    //     userId: alice.id,
-    //     messageText: "Hi Bob, how can I assist you?",
-    //   })
-    //   .returning({
-    //     messageId,
-    //   });
-
-    // await db
-    //   .insert(schema.messages)
-    //   .values({
-    //     conversationId: conversation.conversationsId,
-    //     userId: bob.id,
-    //     messageText: "Hi Alice, I need help with my app.",
-    //   })
-    //   .returning({
-    //     messageId,
     //   });
 
     const output: Record<string, unknown> = {};
+
+    const chalie = await createUser({
+      userName: "chalie",
+      email: "chalieRocks@email.com",
+      firstName: "Chalie",
+      lastName: "Rocks",
+    });
+    output.chalie = chalie;
+
     const bob = await db.query.users.findFirst({
       where: eq(schema.users.userId, 5),
       with: {
@@ -79,7 +71,6 @@ import * as schema from "../schema";
     const [convo] = Array.isArray(bob?.conversations) ? bob.conversations : [];
     output.convo = convo;
 
-    db.query.conversations;
     const convesation = await db.query.conversations.findFirst({
       where: eq(schema.conversations.conversationsId, convo.conversationsId),
       with: {
@@ -95,9 +86,8 @@ import * as schema from "../schema";
       },
     });
     output.conversations = conversations;
-    console.dir(output, { depth: null });
 
-    // console.log("all users", await db.select().from(schema.users));
+    console.dir(output, { depth: null });
   } catch (e) {
     console.log(e);
   }
