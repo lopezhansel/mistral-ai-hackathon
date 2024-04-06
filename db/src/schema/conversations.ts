@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { users } from "./users";
 
@@ -15,3 +15,10 @@ export const conversations = sqliteTable("conversations", {
     .references(() => users.userId),
   createdAt: text("createdAt").notNull().default(sql`CURRENT_TIMESTAMP`),
 });
+
+export const conversationsRelations = relations(conversations, ({ one }) => ({
+  author: one(users, {
+    fields: [conversations.startedByUserID],
+    references: [users.userId],
+  }),
+}));
