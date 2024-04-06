@@ -1,5 +1,6 @@
-import * as schema from "../schema";
+import { eq } from "drizzle-orm";
 import { db } from "../db";
+import * as schema from "../schema";
 
 (async () => {
   try {
@@ -63,14 +64,40 @@ import { db } from "../db";
     //     messageId,
     //   });
 
-    const conversations = await db.query.users.findMany({
+    const output: Record<string, unknown> = {};
+    const bob = await db.query.users.findFirst({
+      where: eq(schema.users.userId, 5),
+      with: {
+        conversations: {
+          with: {
+            messages: true,
+          },
+        },
+      },
+    });
+    output.bob = bob;
+    const [convo] = Array.isArray(bob?.conversations) ? bob.conversations : [];
+    output.convo = convo;
+
+    db.query.conversations;
+    const convesation = await db.query.conversations.findFirst({
+      where: eq(schema.conversations.conversationsId, convo.conversationsId),
+      with: {
+        messages: true,
+        author: true,
+      },
+    });
+    output.convesation = convesation;
+
+    const conversations = await db.query.users.findFirst({
       with: {
         conversations: true,
       },
     });
-    console.dir(conversations, { depth: null });
+    output.conversations = conversations;
+    console.dir(output, { depth: null });
 
-    console.log("all users", await db.select().from(schema.users));
+    // console.log("all users", await db.select().from(schema.users));
   } catch (e) {
     console.log(e);
   }
