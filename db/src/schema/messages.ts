@@ -1,16 +1,17 @@
 import { sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { users } from "./users";
+import { conversations } from "./conversations";
 
-export const conversations = sqliteTable("conversations", {
-  conversationsId: integer("conversationsId").primaryKey({
+export const messages = sqliteTable("messages", {
+  messageId: integer("messageId").primaryKey({
     autoIncrement: true,
   }),
-  conversationsName: text("conversationsName"),
-  startedByUserID: integer("startedByUserID")
+  messageText: text("messageText"),
+  conversationId: integer("conversationId")
     .notNull()
-    .references(() => users.userId),
-  startedWithUserID: integer("startedWithUserID")
+    .references(() => conversations.conversationsId),
+  userId: integer("userId")
     .notNull()
     .references(() => users.userId),
   createdAt: text("createdAt").notNull().default(sql`CURRENT_TIMESTAMP`),

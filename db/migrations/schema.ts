@@ -46,5 +46,18 @@ export const conversations = sqliteTable("conversations", {
   startedWithUserId: integer("startedWithUserID")
     .notNull()
     .references(() => users.id),
-  createdAt: text("created_at").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
+  createdAt: text("createdAt").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
+  conversationsName: text("conversationsName"),
+});
+
+export const messages = sqliteTable("messages", {
+  messageId: integer("messageId").primaryKey({ autoIncrement: true }).notNull(),
+  messageText: text("messageText"),
+  conversationId: integer("conversationId")
+    .notNull()
+    .references(() => conversations.conversationsId),
+  userId: integer("userId")
+    .notNull()
+    .references(() => users.id),
+  createdAt: text("createdAt").default("sql`(CURRENT_TIMESTAMP)`").notNull(),
 });
